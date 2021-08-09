@@ -295,6 +295,9 @@
     <ClInclude Include="LowHealthCondition.h">
       <Filter>AI\Decision\Conditions</Filter>
     </ClInclude>
+    <ClInclude Include="AttackAction.h">
+      <Filter>AI\Decision\Actions</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameObject.cpp">
@@ -473,6 +476,9 @@
     </ClCompile>
     <ClCompile Include="LowHealthCondition.cpp">
       <Filter>AI\Decision\Conditions</Filter>
+    </ClCompile>
+    <ClCompile Include="AttackAction.cpp">
+      <Filter>AI\Decision\Actions</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

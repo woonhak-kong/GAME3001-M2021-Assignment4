@@ -15,7 +15,7 @@ public:
 		m_pCharacter = character;
 	}
 
-private:
+protected:
 	Character* m_pCharacter;
 
 };
