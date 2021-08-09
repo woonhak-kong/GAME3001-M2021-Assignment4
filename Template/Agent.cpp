@@ -24,6 +24,16 @@ float Agent::getLOSDistance() const
 	return m_LOSDistance;
 }
 
+float Agent::getRadiusDistance() const
+{
+	return m_radiusDistance;
+}
+
+void Agent::setRadiusDistance(float distance)
+{
+	m_radiusDistance = distance;
+}
+
 bool Agent::hasLOS() const
 {
 	return m_hasLOS;

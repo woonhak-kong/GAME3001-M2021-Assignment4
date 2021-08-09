@@ -280,6 +280,9 @@
     <ClInclude Include="ActionNode.h">
       <Filter>AI\Decision\Core</Filter>
     </ClInclude>
+    <ClInclude Include="LOSCondition.h">
+      <Filter>AI\Decision\Conditions</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameObject.cpp">
@@ -443,6 +446,9 @@
     </ClCompile>
     <ClCompile Include="DecisionTree.cpp">
       <Filter>AI\Decision\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="LOSCondition.cpp">
+      <Filter>AI\Decision\Conditions</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

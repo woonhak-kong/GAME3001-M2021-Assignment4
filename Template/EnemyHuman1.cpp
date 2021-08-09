@@ -68,7 +68,8 @@ EnemyHuman1::EnemyHuman1(const LoaderParams& loader) :
 	setAttackReach(50);
 	setAttackRectSize(50, 0);
 	m_pWeapon = new Weapon(WeaponType::SWORD1);
-	setLOSDistance(300.f);
+	setLOSDistance(600.f);
+	setRadiusDistance(300.f);
 	m_pWeapon->setCurrentHeading(0.f);
 	setCurrentDirection({1,0});
 }
@@ -130,11 +131,11 @@ void EnemyHuman1::draw()
 		Util::DrawLine(getMiddlePosition(), getMiddlePosition() + getCurrentDirection() * getLOSDistance(), getLOSColour());
 		if (getDetectionRadius())
 		{
-			Util::DrawCircle(getCenterPosition(), getLOSDistance(), {1, 0, 0, 1});
+			Util::DrawCircle(getCenterPosition(), getRadiusDistance(), {1, 0, 0, 1});
 		}
 		else
 		{
-			Util::DrawCircle(getCenterPosition(),getLOSDistance());
+			Util::DrawCircle(getCenterPosition(), getRadiusDistance());
 		}
 
 	}
@@ -144,6 +145,8 @@ void EnemyHuman1::update()
 {
 	Character::update();
 	getGameAI()->update();
+
+	// setting weapon's position and angle
 	m_pWeapon->getTransform().getPosition() = getMiddlePosition() + getCurrentDirection() * 30.f;
 	//std::cout << Util::signedAngle({ 0,-1 }, getCurrentDirection()) << std::endl;
 	m_pWeapon->setCurrentHeading(Util::signedAngle({ 0,-1 }, getCurrentDirection()));

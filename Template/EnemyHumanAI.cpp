@@ -32,8 +32,8 @@ void EnemyHumanAI::update()
 	{
 		m_self->setDetectionRadius(true);
 		// check if there is obstacle bewtween them.
-		bool losCheck = CollisionManager::LOSCheckWithNode(m_self, player);
-		if (losCheck)
+		bool isObstacleThere = CollisionManager::LOSCheckWithNode(m_self, player);
+		if (isObstacleThere)
 		{
 			//std::cout << "true "<< std::endl;
 			m_self->setHasLOS(false);

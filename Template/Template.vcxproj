@@ -181,6 +181,7 @@ xcopy "$(ProjectDir)assets" "$(TargetDir)assets" /s /h /e /d /y /i</Command>
     <ClInclude Include="EnergyBar.h" />
     <ClInclude Include="Explosion.h" />
     <ClInclude Include="ExplosionType.h" />
+    <ClInclude Include="LOSCondition.h" />
     <ClInclude Include="Node.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="RangeAttackBox.h" />
@@ -270,6 +271,7 @@ xcopy "$(ProjectDir)assets" "$(TargetDir)assets" /s /h /e /d /y /i</Command>
     <ClCompile Include="Label.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="LevelParser.cpp" />
+    <ClCompile Include="LOSCondition.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Napkin.cpp" />
     <ClCompile Include="Node.cpp" />
