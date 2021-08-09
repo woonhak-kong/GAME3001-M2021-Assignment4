@@ -3,7 +3,7 @@
 class LOSCondition : public ConditionNode
 {
 public:
-	LOSCondition();
+	LOSCondition(Character* character);
 	~LOSCondition();
 	bool Condition() override;
 };

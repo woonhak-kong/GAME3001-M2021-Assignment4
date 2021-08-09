@@ -4,7 +4,8 @@
 #include "Util.h"
 #include "Scene.h"
 
-LOSCondition::LOSCondition()
+LOSCondition::LOSCondition(Character* character) :
+	ConditionNode(character)
 {
 }
 

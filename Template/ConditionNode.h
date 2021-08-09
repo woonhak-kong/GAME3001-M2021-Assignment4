@@ -8,7 +8,8 @@
 class ConditionNode : public TreeNode
 {
 public:
-	ConditionNode() {
+	ConditionNode(Character* character) : m_pCharacter(character)
+	{
 		isLeaf = false;
 	}
 	virtual ~ConditionNode() = default;

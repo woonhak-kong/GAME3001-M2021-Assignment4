@@ -5,7 +5,7 @@
 class ActionNode : public TreeNode
 {
 public:
-	ActionNode() : m_pCharacter(nullptr) {
+	ActionNode(Character* character) : m_pCharacter(character) {
 		isLeaf = true;
 	}
 	virtual ~ActionNode() = default;
