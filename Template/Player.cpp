@@ -156,6 +156,14 @@ void Player::draw()
 	{
 		Util::DrawLine(getMiddlePosition(), getMiddlePosition() + getCurrentDirection() * getLOSDistance(), getLOSColour());
 	}
+
+	for (int row = 0; row < m_tileList.size(); row++)
+	{
+		for (int col = 0; col < m_tileList[0].size(); col++)
+		{
+			m_tileList[row][col].m_label.draw();
+		}
+	}
 }
 
 void Player::update()

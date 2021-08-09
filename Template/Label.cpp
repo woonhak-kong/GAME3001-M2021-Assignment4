@@ -12,7 +12,7 @@ Label::Label(const std::string& text, const std::string& font_name, const int fo
 	m_buildFontID();
 
 	FontManager::Instance().load(m_fontPath, m_fontID, font_size, font_style);
-	FontManager::Instance().textToTexture(text, m_fontID, m_fontID, colour);
+	FontManager::Instance().textToTexture(text, m_fontID, m_fontID, {255,255,0,255});
 	const auto size = TextureManager::Instance().getTextureSize(m_fontID);
 	setWidth(size.x);
 	setHeight(size.y);
@@ -62,6 +62,19 @@ void Label::setText(const std::string & new_text)
 	setHeight(size.y);
 }
 
+void Label::setText(const std::string& new_text, SDL_Color color)
+{
+	m_text = new_text;
+
+	m_buildFontID();
+
+	FontManager::Instance().load(m_fontPath, m_fontID, m_fontSize, m_fontStyle);
+	FontManager::Instance().textToTexture(m_text, m_fontID, m_fontID, color);
+	//FontManager::Instance()->textToTexture(new_text, m_fontID, m_fontID, {255,255,0,255});
+	const auto size = TextureManager::Instance().getTextureSize(m_fontID);
+	setWidth(size.x);
+	setHeight(size.y);
+}
 void Label::setColour(const SDL_Color new_colour) const
 {
 	FontManager::Instance().load(m_fontPath, m_fontID, m_fontSize, m_fontStyle);

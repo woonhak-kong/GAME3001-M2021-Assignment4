@@ -11,6 +11,7 @@ Node::Node() :
 	m_isCollidable(false),
 	m_isTransparent(false)
 {
+	m_label.setSize(10);
 }
 
 Node::Node(int x, int y, int row, int col, int size, bool collidable, bool isTransparent) :

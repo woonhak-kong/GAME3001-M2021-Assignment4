@@ -7,6 +7,7 @@
 #include "TextureManager.h"
 #include "algorithm"
 #include "AttackBox.h"
+#include "Util.h"
 
 Character::Character(const LoaderParams& loader) :
 	m_isJumping(false),
@@ -35,12 +36,16 @@ Character::Character(const LoaderParams& loader) :
 	setRealCollisionRect(loader.m_realWidth, loader.m_realHeight);
 	setWidth(loader.m_widthOfTexture);
 	setHeight(loader.m_heightOfTexture);
+
+
 }
 
 void Character::draw()
 {
 	PhysicsObject::draw();
 	TextureManager::Instance().drawFillRect(getTransform().getPosition().x, getTransform().getPosition().y - 5, (static_cast<float>(m_presentHp) / static_cast<float>(m_maxHp)) * getWidth(), 5, { 255, 0, 0, 255 });
+
+
 }
 
 void Character::update()
@@ -100,6 +105,8 @@ void Character::update()
 		m_alpha = 255;
 		m_isHit = false;
 	}
+
+
 }
 
 void Character::clean()
@@ -181,6 +188,13 @@ bool Character::getDetectionRadius() const
 	return m_isDetectionRadius;
 }
 
+glm::vec2 Character::getGridPosition()
+{
+	const int col = getTransform().getPosition().x / Config::TILE_SIZE;
+	const int row = getTransform().getPosition().y / Config::TILE_SIZE;
+	return glm::vec2(row, col);
+}
+
 void Character::setDetectionRadius(bool state)
 {
 	m_isDetectionRadius = state;
@@ -237,6 +251,48 @@ glm::vec2 Character::getMiddlePosition()
 	return middlePosition;
 }
 
+void Character::calculateF(glm::vec2 goal)
+{
+	int g, h, f;
+
+	for (int row = 0; row < m_tileList.size(); row++)
+	{
+		for (int col = 0; col < m_tileList[0].size(); col++)
+		{
+			g = abs(this->getGridPosition().x * 10 - m_tileList[row][col].m_row * 10) + abs(this->getGridPosition().y * 10 - m_tileList[row][col].m_col * 10);
+			h = abs(goal.x * 10 - m_tileList[row][col].m_row * 10) + abs(goal.y * 10 - m_tileList[row][col].m_col * 10);
+			m_tileList[row][col].m_g = g;
+			m_tileList[row][col].m_h = h;
+			m_tileList[row][col].m_f = g + h;
+			//std::cout << g << ", ";
+			//m_tileList[row][col].m_label.setText(std::to_string(m_tileList[row][col].m_f), {255,255,0,255});
+			m_tileList[row][col].m_label.setText(std::to_string(g+h), { 255,255,0,255 });
+			m_tileList[row][col].m_label.getTransform().getPosition().x = m_tileList[row][col].m_x + Config::TILE_SIZE / 2;
+			m_tileList[row][col].m_label.getTransform().getPosition().y = m_tileList[row][col].m_y + Config::TILE_SIZE * 0.8f;
+		}
+		std::cout << std::endl;
+	}
+
+	//for (auto tile : m_tileList)
+	//{
+	//	g = abs(player->getGridPosition().x * 10 - tile->getGridPosition().x * 10) + abs(player->getGridPosition().y * 10 - tile->getGridPosition().y * 10);
+	//	if (m_euclidean)
+	//	{
+	//		h = Util::distance(glm::vec2(goal->getGridPosition().x * 10, goal->getGridPosition().y * 10), glm::vec2(tile->getGridPosition().x * 10, tile->getGridPosition().y * 10));
+	//	}
+	//	else
+	//	{
+	//		h = abs(goal->getGridPosition().x * 10 - tile->getGridPosition().x * 10) + abs(goal->getGridPosition().y * 10 - tile->getGridPosition().y * 10);
+	//	}
+
+
+	//	tile->setG(g);
+	//	tile->setH(h);
+	//	tile->setF(g + h);
+
+	//}
+}
+
 void Character::setIsAttacking(bool attacking)
 {
 	m_isAttacking = attacking;
@@ -270,6 +326,11 @@ void Character::takeDamage(int damage)
 	}
 }
 
+void Character::setNodeList(std::vector<std::vector<Node>> tileList)
+{
+	m_tileList = tileList;
+}
+
 
 void Character::jump()
 {
@@ -286,6 +347,7 @@ void Character::jump()
 
 void Character::moveToRight()
 {
+
 	if (!m_isDead)
 	{
 		if (m_isJumping)
@@ -328,6 +390,7 @@ void Character::moveToLeft()
 
 void Character::moveToUp()
 {
+
 	if (!m_isDead)
 	{
 		if (m_isJumping)

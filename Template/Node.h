@@ -3,6 +3,8 @@
 #define __NODE__
 #include <glm/vec2.hpp>
 
+#include "Label.h"
+
 class Node
 {
 public:
@@ -21,8 +23,11 @@ public:
 	int m_col;
 	bool m_isCollidable;
 	bool m_isTransparent;
+	int m_f;
+	int m_g;
+	int m_h;
 
-
+	Label m_label;
 };
 
 

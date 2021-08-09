@@ -463,7 +463,7 @@ bool CollisionManager::LOSCheckWithNode(GameObject* self, GameObject* target)
 	auto targetCharacter = dynamic_cast<Character*>(target);
 
 	glm::vec2 selfPosition = selfCharacter->getCenterPosition();
-	auto list = selfCharacter->getParent()->getNodeList();
+	//auto list = selfCharacter->getParent()->getNodeList();
 
 	int distanceBetweenThem = Util::distance(selfCharacter->getCenterPosition(), targetCharacter->getCenterPosition());
 	int modifiedNumOfCheck = distanceBetweenThem / 10; // because tile size is 16
@@ -473,8 +473,8 @@ bool CollisionManager::LOSCheckWithNode(GameObject* self, GameObject* target)
 		glm::vec2 positionOnTheLine = selfPosition + tmp;
 		//std::cout << tmp.x << ", "<< tmp.y << std::endl;
 		//std::cout << positionOnTheLine.x << ", " << positionOnTheLine.y << std::endl;
-		if (list[(int)positionOnTheLine.y / 16][(int)positionOnTheLine.x / 16].m_isCollidable &&
-			!list[(int)positionOnTheLine.y / 16][(int)positionOnTheLine.x / 16].m_isTransparent)
+		if (selfCharacter->getParent()->getNodeList()[(int)positionOnTheLine.y / 16][(int)positionOnTheLine.x / 16].m_isCollidable &&
+			!selfCharacter->getParent()->getNodeList()[(int)positionOnTheLine.y / 16][(int)positionOnTheLine.x / 16].m_isTransparent)
 		{
 			return true;
 		}

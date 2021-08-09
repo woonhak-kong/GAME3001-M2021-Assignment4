@@ -14,13 +14,13 @@ public:
 	static const int SCREEN_HEIGHT = 720;
 	static const int ROW_NUM = 15;
 	static const int COL_NUM = 20;
-	static const int TILE_SIZE = 40;
 	static const int TILE_COST = 1;
 	static const int MINE_NUM = 50;
 	static const int SCORE = 0;
 	static const int LIVES = 5;
 	static const int GRAVITY = 5.0f;
 	inline static bool SHOWING_DEBUG = true;
+	inline static int TILE_SIZE = 0;
 	inline static int mapWidth = 0;
 	inline static int mapHeight = 0;
 

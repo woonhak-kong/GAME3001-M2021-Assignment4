@@ -42,6 +42,7 @@ Level* LevelParser::ParseLevel(const char* levelFile, Scene* scene)
         std::cout << "Height: " << m_height << std::endl;
         Config::mapWidth = m_width * m_tileSize;
         Config::mapHeight = m_height * m_tileSize;
+        Config::TILE_SIZE = m_tileSize;
 
         // parse the tilesets
         for (TiXmlElement* e = pRoot->FirstChildElement(); e != NULL; e = e->NextSiblingElement())
@@ -190,6 +191,7 @@ void LevelParser::parseObjectLayer(TiXmlElement* pObjectElement, Scene* scene)
             if (ID == "player")
             {
                 Player* player = new Player(loader);
+                player->setNodeList(scene->getNodeList());
                 scene->addChild(player, 4);
                 scene->setPlayer(player);
             }
@@ -199,7 +201,9 @@ void LevelParser::parseObjectLayer(TiXmlElement* pObjectElement, Scene* scene)
             }
             else if (ID == "zombie")
             {
-                scene->addChild(new EnemyHuman1(loader),4 );
+                EnemyHuman1* enemy = new EnemyHuman1(loader);
+                enemy->setNodeList(scene->getNodeList());
+                scene->addChild(enemy,4 );
             }
             else if (ID == EnemyType::Boss1)
             {
@@ -320,6 +324,8 @@ void LevelParser::parseTileLayer(TiXmlElement* pTileElement, std::vector<Layer*>
             data[rows][cols] = ids[rows * m_width + cols];
             //std::cout << data[rows][cols];
 
+            scene->getNodeList()[rows][cols].m_row = rows;
+            scene->getNodeList()[rows][cols].m_col = cols;
             scene->getNodeList()[rows][cols].m_x = cols * m_tileSize;
             scene->getNodeList()[rows][cols].m_y = rows * m_tileSize;
             scene->getNodeList()[rows][cols].m_nodeSize = m_tileSize;

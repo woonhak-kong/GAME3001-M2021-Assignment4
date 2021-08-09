@@ -3,6 +3,7 @@
 #include "GameAI.h"
 #include "Layer.h"
 #include "LoaderParams.h"
+#include "Node.h"
 #include "PhysicsObject.h"
 #include "SwordType.h"
 
@@ -31,6 +32,7 @@ public:
 	int getMaxHp() const;
 	int getAlpha() const;
 	bool getDetectionRadius() const;
+	glm::vec2 getGridPosition();
 	// setter
 	void setMoveSpeed(float speed);
 	void setAttackSpeed(float speed);
@@ -45,6 +47,7 @@ public:
 	void setGameAI(GameAI* ai);
 	void setDetectionRadius(bool state);
 	void takeDamage(int damage);
+	void setNodeList(std::vector<std::vector<Node>> tileList);
 
 	void jump();
 	void moveToRight();
@@ -64,6 +67,7 @@ public:
 
 
 	glm::vec2 getMiddlePosition();
+	void calculateF(glm::vec2 goal);
 
 
 
@@ -93,9 +97,13 @@ private:
 	int m_alpha;
 	bool m_isDetectionRadius;
 
-private:
 
+protected:
 
+	std::vector<std::vector<Node>> m_tileList;
+	std::vector<std::vector<Node>> m_closedTileList;
+	std::vector<std::vector<Node>> m_openTileList;
+	std::vector<std::vector<Node>> m_shortestTileList;
 
 
 };
