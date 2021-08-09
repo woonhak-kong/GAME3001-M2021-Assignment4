@@ -187,6 +187,7 @@ xcopy "$(ProjectDir)assets" "$(TargetDir)assets" /s /h /e /d /y /i</Command>
     <ClInclude Include="Player.h" />
     <ClInclude Include="RadiusCondition.h" />
     <ClInclude Include="RangeAttackBox.h" />
+    <ClInclude Include="RangeCombatCondition.h" />
     <ClInclude Include="ScoreManager.h" />
     <ClInclude Include="SoundID.h" />
     <ClInclude Include="Sword.h" />
@@ -284,6 +285,7 @@ xcopy "$(ProjectDir)assets" "$(TargetDir)assets" /s /h /e /d /y /i</Command>
     <ClCompile Include="PlayScene1.cpp" />
     <ClCompile Include="RadiusCondition.cpp" />
     <ClCompile Include="RangeAttackBox.cpp" />
+    <ClCompile Include="RangeCombatCondition.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="ScoreManager.cpp" />
     <ClCompile Include="SoundManager.cpp" />

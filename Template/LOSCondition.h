@@ -1,4 +1,6 @@
 #pragma once
+#ifndef __LOS_CONDITION__
+#define __LOS_CONDITION__
 #include "ConditionNode.h"
 class LOSCondition : public ConditionNode
 {
@@ -8,3 +10,4 @@ public:
 	bool Condition() override;
 };
 
+#endif // __LOS_CONDITION__

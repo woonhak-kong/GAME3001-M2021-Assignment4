@@ -289,6 +289,9 @@
     <ClInclude Include="CloseCombatCondition.h">
       <Filter>AI\Decision\Conditions</Filter>
     </ClInclude>
+    <ClInclude Include="RangeCombatCondition.h">
+      <Filter>AI\Decision\Conditions</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameObject.cpp">
@@ -460,6 +463,9 @@
       <Filter>AI\Decision\Conditions</Filter>
     </ClCompile>
     <ClCompile Include="CloseCombatCondition.cpp">
+      <Filter>AI\Decision\Conditions</Filter>
+    </ClCompile>
+    <ClCompile Include="RangeCombatCondition.cpp">
       <Filter>AI\Decision\Conditions</Filter>
     </ClCompile>
   </ItemGroup>

@@ -1,4 +1,6 @@
 #pragma once
+#ifndef __RADIUS_CONDITION__
+#define __RADIUS_CONDITION__
 #include "ConditionNode.h"
 class RadiusCondition : public ConditionNode
 {
@@ -8,3 +10,4 @@ public:
 	bool Condition() override;
 };
 
+#endif // __RADIUS_CONDITION__
