@@ -28,6 +28,7 @@ public:
 	SDL_Rect getAttackCollisionRect() const;
 	GameAI* getGameAI() const;
 	int getPresentHp() const;
+	int getMaxHp() const;
 	int getAlpha() const;
 	bool getDetectionRadius() const;
 	// setter

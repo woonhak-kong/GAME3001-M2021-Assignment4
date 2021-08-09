@@ -166,6 +166,11 @@ int Character::getPresentHp() const
 	return m_presentHp;
 }
 
+int Character::getMaxHp() const
+{
+	return m_maxHp;
+}
+
 int Character::getAlpha() const
 {
 	return m_alpha;
