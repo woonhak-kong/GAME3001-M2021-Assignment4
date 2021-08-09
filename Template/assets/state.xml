@@ -1,0 +1,136 @@
+<?xml version="1.0" ?>
+<STATES>
+    <TUTORIALSCENE>
+        <TEXTURES>
+            <texture filename="assets/characters/enemy/human1/Human1_64x48.png" ID="enemy_human"/>
+            <texture filename="assets/particles/explosion/explosion1.png" ID="explosion1"/>
+            <texture filename="assets/particles/explosion/explosion2.png" ID="explosion2"/>
+            <texture filename="assets/UI/energy_background.png" ID="energy_background"/>
+            <texture filename="assets/objects/door.png" ID="door"/>
+            <texture filename="assets/objects/basic_sword.png" ID="basic_sword"/>
+            <texture filename="assets/objects/dark_sword.png" ID="dark_sword"/>
+            <texture filename="assets/objects/fire_sword.png" ID="fire_sword"/>
+            <texture filename="assets/objects/laser_sword.png" ID="laser_sword"/>
+            <texture filename="assets/UI/box.png" ID="box"/>
+            <texture filename="assets/particles/sword/slash_dark.png" ID="slash_dark"/>
+            <texture filename="assets/particles/sword/slash_fire.png" ID="slash_fire"/>
+            <texture filename="assets/particles/sword/slash_laser.png" ID="slash_laser"/>
+            <texture filename="assets/particles/sword/slash_basic.png" ID="slash_basic"/>
+            <texture filename="assets/particles/hit_particle.png" ID="hit_particle"/>
+            <texture filename="assets/particles/trinkle.png" ID="trinkle"/>
+        </TEXTURES>
+        <SOUNDS>
+            <sound filename="assets/sounds/bgm/scene0.mp3" soundtype="bgm" ID="bgm"/>
+            <sound filename="assets/sounds/sfx/hit26.mp3" soundtype="sfx" ID="hit"/>
+            <sound filename="assets/sounds/sfx/sword1.wav" soundtype="sfx" ID="attack"/>
+            <sound filename="assets/sounds/sfx/enemy_explosion.wav" soundtype="sfx" ID="enemy_explosion"/>
+            <sound filename="assets/sounds/sfx/enemy_attack.wav" soundtype="sfx" ID="enemy_melee_attack"/>
+            <sound filename="assets/sounds/sfx/jump.wav" soundtype="sfx" ID="jump"/>
+        </SOUNDS>
+    </TUTORIALSCENE>
+    <STARTSCENE>
+        <SOUNDS>
+            <sound filename="assets/sounds/sfx/btn_hover.ogg" soundtype="sfx" ID="btn_hover"/>
+            <sound filename="assets/sounds/sfx/btn_click.wav" soundtype="sfx" ID="btn_click"/>
+        </SOUNDS>
+    </STARTSCENE>
+    <ENDSCENE>
+        <SOUNDS>
+            <sound filename="assets/sounds/sfx/btn_hover.ogg" soundtype="sfx" ID="btn_hover"/>
+            <sound filename="assets/sounds/sfx/btn_click.wav" soundtype="sfx" ID="btn_click"/>
+        </SOUNDS>
+    </ENDSCENE>
+    <PLAYSCENE1>
+        <TEXTURES>
+            <texture filename="assets/characters/enemy/human1/Human1_64x48.png" ID="enemy_human"/>
+            <texture filename="assets/particles/explosion/explosion1.png" ID="explosion1"/>
+            <texture filename="assets/particles/explosion/explosion2.png" ID="explosion2"/>
+            <texture filename="assets/UI/energy_background.png" ID="energy_background"/>
+            <texture filename="assets/characters/boss1/Attack1.png" ID="boss1_attack1"/>
+            <texture filename="assets/characters/boss1/Attack2.png" ID="boss1_attack2"/>
+            <texture filename="assets/characters/boss1/Death.png" ID="boss1_death"/>
+            <texture filename="assets/characters/boss1/Fall.png" ID="boss1_fall"/>
+            <texture filename="assets/characters/boss1/Idle.png" ID="boss1_idle"/>
+            <texture filename="assets/characters/boss1/Jump.png" ID="boss1_jump"/>
+            <texture filename="assets/characters/boss1/Run.png" ID="boss1_run"/>
+            <texture filename="assets/characters/boss1/Take_hit.png" ID="boss1_hit"/>
+            <texture filename="assets/objects/door.png" ID="door"/>
+            <texture filename="assets/objects/basic_sword.png" ID="basic_sword"/>
+            <texture filename="assets/objects/dark_sword.png" ID="dark_sword"/>
+            <texture filename="assets/objects/fire_sword.png" ID="fire_sword"/>
+            <texture filename="assets/objects/laser_sword.png" ID="laser_sword"/>
+            <texture filename="assets/UI/box.png" ID="box"/>
+            <texture filename="assets/particles/sword/slash_dark.png" ID="slash_dark"/>
+            <texture filename="assets/particles/sword/slash_fire.png" ID="slash_fire"/>
+            <texture filename="assets/particles/sword/slash_laser.png" ID="slash_laser"/>
+            <texture filename="assets/particles/sword/slash_basic.png" ID="slash_basic"/>
+            <texture filename="assets/particles/hit_particle.png" ID="hit_particle"/>
+            <texture filename="assets/particles/trinkle.png" ID="trinkle"/>
+        </TEXTURES>
+        <SOUNDS>
+            <sound filename="assets/sounds/bgm/scene1.mp3" soundtype="bgm" ID="bgm"/>
+            <sound filename="assets/sounds/sfx/hit26.mp3" soundtype="sfx" ID="hit"/>
+            <sound filename="assets/sounds/sfx/sword1.wav" soundtype="sfx" ID="attack"/>
+            <sound filename="assets/sounds/sfx/enemy_explosion.wav" soundtype="sfx" ID="enemy_explosion"/>
+            <sound filename="assets/sounds/sfx/enemy_attack.wav" soundtype="sfx" ID="enemy_melee_attack"/>
+            <sound filename="assets/sounds/sfx/jump.wav" soundtype="sfx" ID="jump"/>
+        </SOUNDS>
+    </PLAYSCENE1>
+    <PLAYSCENE2>
+        <TEXTURES>
+            <texture filename="assets/characters/enemy/human2/Human2_64x48.png" ID="enemy_human"/>
+            <texture filename="assets/particles/explosion/explosion1.png" ID="explosion1"/>
+            <texture filename="assets/particles/explosion/explosion2.png" ID="explosion2"/>
+            <texture filename="assets/UI/energy_background.png" ID="energy_background"/>
+            <texture filename="assets/objects/door.png" ID="door"/>
+            <texture filename="assets/objects/basic_sword.png" ID="basic_sword"/>
+            <texture filename="assets/objects/dark_sword.png" ID="dark_sword"/>
+            <texture filename="assets/objects/fire_sword.png" ID="fire_sword"/>
+            <texture filename="assets/objects/laser_sword.png" ID="laser_sword"/>
+            <texture filename="assets/UI/box.png" ID="box"/>
+            <texture filename="assets/particles/sword/slash_dark.png" ID="slash_dark"/>
+            <texture filename="assets/particles/sword/slash_fire.png" ID="slash_fire"/>
+            <texture filename="assets/particles/sword/slash_laser.png" ID="slash_laser"/>
+            <texture filename="assets/particles/sword/slash_basic.png" ID="slash_basic"/>
+            <texture filename="assets/particles/hit_particle.png" ID="hit_particle"/>
+            <texture filename="assets/particles/trinkle.png" ID="trinkle"/>
+        </TEXTURES>
+        <SOUNDS>
+            <sound filename="assets/sounds/bgm/scene2.mp3" soundtype="bgm" ID="bgm"/>
+            <sound filename="assets/sounds/sfx/hit26.mp3" soundtype="sfx" ID="hit"/>
+            <sound filename="assets/sounds/sfx/sword1.wav" soundtype="sfx" ID="attack"/>
+            <sound filename="assets/sounds/sfx/enemy_explosion.wav" soundtype="sfx" ID="enemy_explosion"/>
+            <sound filename="assets/sounds/sfx/enemy_attack.wav" soundtype="sfx" ID="enemy_melee_attack"/>
+            <sound filename="assets/sounds/sfx/jump.wav" soundtype="sfx" ID="jump"/>
+        </SOUNDS>
+    </PLAYSCENE2>
+    <PLAYSCENE3>
+        <TEXTURES>
+            <texture filename="assets/characters/enemy/human3/Human3_64x48.png" ID="enemy_human"/>
+            <texture filename="assets/particles/explosion/explosion1.png" ID="explosion1"/>
+            <texture filename="assets/particles/explosion/explosion2.png" ID="explosion2"/>
+            <texture filename="assets/UI/energy_background.png" ID="energy_background"/>
+            <texture filename="assets/objects/door.png" ID="door"/>
+            <texture filename="assets/objects/basic_sword.png" ID="basic_sword"/>
+            <texture filename="assets/objects/dark_sword.png" ID="dark_sword"/>
+            <texture filename="assets/objects/fire_sword.png" ID="fire_sword"/>
+            <texture filename="assets/objects/laser_sword.png" ID="laser_sword"/>
+            <texture filename="assets/UI/box.png" ID="box"/>
+            <texture filename="assets/particles/sword/slash_dark.png" ID="slash_dark"/>
+            <texture filename="assets/particles/sword/slash_fire.png" ID="slash_fire"/>
+            <texture filename="assets/particles/sword/slash_laser.png" ID="slash_laser"/>
+            <texture filename="assets/particles/sword/slash_basic.png" ID="slash_basic"/>
+            <texture filename="assets/particles/hit_particle.png" ID="hit_particle"/>
+            <texture filename="assets/particles/trinkle.png" ID="trinkle"/>
+        </TEXTURES>
+        <SOUNDS>
+            <sound filename="assets/sounds/bgm/scene3.mp3" soundtype="bgm" ID="bgm"/>
+            <sound filename="assets/sounds/sfx/hit26.mp3" soundtype="sfx" ID="hit"/>
+            <sound filename="assets/sounds/sfx/sword1.wav" soundtype="sfx" ID="attack"/>
+            <sound filename="assets/sounds/sfx/enemy_explosion.wav" soundtype="sfx" ID="enemy_explosion"/>
+            <sound filename="assets/sounds/sfx/enemy_attack.wav" soundtype="sfx" ID="enemy_melee_attack"/>
+            <sound filename="assets/sounds/sfx/jump.wav" soundtype="sfx" ID="jump"/>
+        </SOUNDS>
+    </PLAYSCENE3>
+   
+</STATES>

@@ -1,0 +1,418 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Core">
+      <UniqueIdentifier>{66183404-44a2-42f3-8dd4-ecca176eadcb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components">
+      <UniqueIdentifier>{6fe9ddcc-37de-4a0b-89e4-010d8cdfa343}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Enums">
+      <UniqueIdentifier>{87a017f5-9939-47ff-9ec5-1f636c045bff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Singletons">
+      <UniqueIdentifier>{bf055a5b-3577-4207-b2f8-0c8d70282024}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Managers">
+      <UniqueIdentifier>{6b67abda-6fd2-4d8a-8758-69cce3a06e96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scenes">
+      <UniqueIdentifier>{45ffd2ee-5f90-4c85-92b6-3366f69c8ea8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObjects">
+      <UniqueIdentifier>{8a4ed061-7ce4-4c97-9569-2e8f4c97ab71}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UIGameObject">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Main">
+      <UniqueIdentifier>{24b36c66-35f8-43d5-be0b-707a341b47fe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vendor">
+      <UniqueIdentifier>{5acfd881-f72a-4cd4-8edb-e7403740df28}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vendor\Tinyxml">
+      <UniqueIdentifier>{ee4c692e-3f4a-4b33-aead-af79974f9cbb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI">
+      <UniqueIdentifier>{5e51c9db-2105-4c3f-a489-11e5ddf4776f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="RigidBody.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Transform.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObjectType.h">
+      <Filter>Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="DisplayObject.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Sprite.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteSheet.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Frame.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Animation.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="UIControl.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Event.h">
+      <Filter>Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="MouseButtons.h">
+      <Filter>Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Singletons</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneState.h">
+      <Filter>Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="Config.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="EventManager.h">
+      <Filter>Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="FontManager.h">
+      <Filter>Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureManager.h">
+      <Filter>Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionManager.h">
+      <Filter>Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundManager.h">
+      <Filter>Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundType.h">
+      <Filter>Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="StartScene.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="tinystr.h">
+      <Filter>Vendor\Tinyxml</Filter>
+    </ClInclude>
+    <ClInclude Include="tinyxml.h">
+      <Filter>Vendor\Tinyxml</Filter>
+    </ClInclude>
+    <ClInclude Include="Level.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Layer.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="TileLayer.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="GameSceneStateMachine.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectLayer.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelParser.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObjectFactory.h">
+      <Filter>Singletons</Filter>
+    </ClInclude>
+    <ClInclude Include="TestPlayer.h">
+      <Filter>GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Singletons</Filter>
+    </ClInclude>
+    <ClInclude Include="Character.h">
+      <Filter>GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Napkin.h">
+      <Filter>GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayScene1.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="Button.h">
+      <Filter>UIGameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Label.h">
+      <Filter>UIGameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Background.h">
+      <Filter>GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyKnight.h">
+      <Filter>GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterState.h">
+      <Filter>Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="EndScene.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="AttackBox.h">
+      <Filter>GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsObject.h">
+      <Filter>GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="GameAI.h">
+      <Filter>AI</Filter>
+    </ClInclude>
+    <ClInclude Include="KnightAI.h">
+      <Filter>AI</Filter>
+    </ClInclude>
+    <ClInclude Include="StateParser.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="LoaderParams.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyType.h">
+      <Filter>Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyHuman1.h">
+      <Filter>GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureID.h">
+      <Filter>Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyHumanAI.h">
+      <Filter>AI</Filter>
+    </ClInclude>
+    <ClInclude Include="CallbackType.h">
+      <Filter>Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="Explosion.h">
+      <Filter>GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="ExplosionType.h">
+      <Filter>Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundID.h">
+      <Filter>Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="EnergyBar.h">
+      <Filter>UIGameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Boss1.h">
+      <Filter>GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="ScoreManager.h">
+      <Filter>Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Door.h">
+      <Filter>GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="ClearScene.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="Sword.h">
+      <Filter>GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="SwordType.h">
+      <Filter>Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="Node.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Agent.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Util.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Weapon.h">
+      <Filter>GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="WeaponType.h">
+      <Filter>Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="RangeAttackBox.h">
+      <Filter>GameObjects</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="DisplayObject.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Sprite.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="SpriteSheet.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="UIControl.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Singletons</Filter>
+    </ClCompile>
+    <ClCompile Include="EventManager.cpp">
+      <Filter>Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="FontManager.cpp">
+      <Filter>Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureManager.cpp">
+      <Filter>Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionManager.cpp">
+      <Filter>Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundManager.cpp">
+      <Filter>Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="StartScene.cpp">
+      <Filter>Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="tinystr.cpp">
+      <Filter>Vendor\Tinyxml</Filter>
+    </ClCompile>
+    <ClCompile Include="tinyxml.cpp">
+      <Filter>Vendor\Tinyxml</Filter>
+    </ClCompile>
+    <ClCompile Include="tinyxmlerror.cpp">
+      <Filter>Vendor\Tinyxml</Filter>
+    </ClCompile>
+    <ClCompile Include="tinyxmlparser.cpp">
+      <Filter>Vendor\Tinyxml</Filter>
+    </ClCompile>
+    <ClCompile Include="Level.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="TileLayer.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelParser.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="GameSceneStateMachine.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectLayer.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObjectFactory.cpp">
+      <Filter>Singletons</Filter>
+    </ClCompile>
+    <ClCompile Include="TestPlayer.cpp">
+      <Filter>GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Singletons</Filter>
+    </ClCompile>
+    <ClCompile Include="Character.cpp">
+      <Filter>GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="Napkin.cpp">
+      <Filter>GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayScene1.cpp">
+      <Filter>Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="Button.cpp">
+      <Filter>UIGameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Label.cpp">
+      <Filter>UIGameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Background.cpp">
+      <Filter>GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyKnight.cpp">
+      <Filter>GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="EndScene.cpp">
+      <Filter>Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="AttackBox.cpp">
+      <Filter>GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicsObject.cpp">
+      <Filter>GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="KnightAI.cpp">
+      <Filter>AI</Filter>
+    </ClCompile>
+    <ClCompile Include="StateParser.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyHuman1.cpp">
+      <Filter>GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyHumanAI.cpp">
+      <Filter>AI</Filter>
+    </ClCompile>
+    <ClCompile Include="Explosion.cpp">
+      <Filter>GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="EnergyBar.cpp">
+      <Filter>UIGameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Boss1.cpp">
+      <Filter>GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="ScoreManager.cpp">
+      <Filter>Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="Door.cpp">
+      <Filter>GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="ClearScene.cpp">
+      <Filter>Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="Sword.cpp">
+      <Filter>GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="Node.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="Agent.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Util.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Weapon.cpp">
+      <Filter>GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="RangeAttackBox.cpp">
+      <Filter>GameObjects</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
