@@ -38,6 +38,18 @@
     <Filter Include="AI">
       <UniqueIdentifier>{5e51c9db-2105-4c3f-a489-11e5ddf4776f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="AI\Decision">
+      <UniqueIdentifier>{ac3d1a14-0499-495c-8d68-ebd2c13383f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Decision\Core">
+      <UniqueIdentifier>{d423d8ef-c03e-42d2-9038-6c0a885d9209}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Decision\Conditions">
+      <UniqueIdentifier>{d0a864a7-d2e7-4fa8-850c-39be9ba34e42}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI\Decision\Actions">
+      <UniqueIdentifier>{c01905e9-262c-46d4-beac-926bb669891e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="RigidBody.h">
@@ -253,6 +265,21 @@
     <ClInclude Include="RangeAttackBox.h">
       <Filter>GameObjects</Filter>
     </ClInclude>
+    <ClInclude Include="DecisionTree.h">
+      <Filter>AI\Decision\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="TreeNode.h">
+      <Filter>AI\Decision\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="TreeNodeType.h">
+      <Filter>Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="ConditionNode.h">
+      <Filter>AI\Decision\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="ActionNode.h">
+      <Filter>AI\Decision\Core</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameObject.cpp">
@@ -413,6 +440,9 @@
     </ClCompile>
     <ClCompile Include="RangeAttackBox.cpp">
       <Filter>GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="DecisionTree.cpp">
+      <Filter>AI\Decision\Core</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
