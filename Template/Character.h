@@ -68,7 +68,7 @@ public:
 
 	glm::vec2 getMiddlePosition();
 	void calculateF(glm::vec2 goal);
-
+	void findAStarPath();
 
 
 private:
@@ -96,14 +96,14 @@ private:
 	int m_hitMotionNum;
 	int m_alpha;
 	bool m_isDetectionRadius;
-
+	bool m_found;
 
 protected:
 
 	std::vector<std::vector<Node>> m_tileList;
-	std::vector<std::vector<Node>> m_closedTileList;
-	std::vector<std::vector<Node>> m_openTileList;
-	std::vector<std::vector<Node>> m_shortestTileList;
+	std::vector<Node*> m_closedTileList;
+	std::vector<Node*> m_openTileList;
+	std::vector<Node*> m_shortestTileList;
 
 
 };

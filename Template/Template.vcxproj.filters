@@ -298,6 +298,9 @@
     <ClInclude Include="AttackAction.h">
       <Filter>AI\Decision\Actions</Filter>
     </ClInclude>
+    <ClInclude Include="NodeStatus.h">
+      <Filter>Enums</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameObject.cpp">

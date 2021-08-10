@@ -9,7 +9,9 @@ Node::Node() :
 	m_row(0),
 	m_col(0),
 	m_isCollidable(false),
-	m_isTransparent(false)
+	m_isTransparent(false),
+	m_status(NodeStatus::UNVISITED),
+	m_parrentTile(nullptr)
 {
 	m_label.setSize(10);
 }
@@ -40,4 +42,29 @@ void Node::draw()
 		TextureManager::Instance().drawRect(m_x, m_y, m_nodeSize, m_nodeSize, { 255,0,0,255 });
 	}
 	SDL_RenderDrawPoint(TextureManager::Instance().getRenderer(), m_x, m_y);
+}
+
+void Node::setParrentTile(Node* parrent)
+{
+	m_parrentTile = parrent;
+}
+
+void Node::setStatus(NodeStatus status)
+{
+	m_status = status;
+}
+
+std::map<NeighbourDirection, Node*>& Node::getNeighbourMap()
+{
+	return m_neighbourMap;
+}
+
+Node* Node::getParrentTile()
+{
+	return m_parrentTile;
+}
+
+NodeStatus Node::getStatus() const
+{
+	return m_status;
 }

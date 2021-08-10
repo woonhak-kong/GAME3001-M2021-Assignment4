@@ -186,6 +186,7 @@ xcopy "$(ProjectDir)assets" "$(TargetDir)assets" /s /h /e /d /y /i</Command>
     <ClInclude Include="LOSCondition.h" />
     <ClInclude Include="LowHealthCondition.h" />
     <ClInclude Include="Node.h" />
+    <ClInclude Include="NodeStatus.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="RadiusCondition.h" />
     <ClInclude Include="RangeAttackBox.h" />

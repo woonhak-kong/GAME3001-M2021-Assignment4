@@ -1,9 +1,20 @@
 #pragma once
 #ifndef __NODE__
 #define __NODE__
+#include <map>
 #include <glm/vec2.hpp>
 
 #include "Label.h"
+#include "NodeStatus.h"
+
+enum class NeighbourDirection
+{
+	UP,
+	RIGHT,
+	DOWN,
+	LEFT,
+	NUM_OF_DIRECTION
+};
 
 class Node
 {
@@ -12,8 +23,12 @@ public:
 	Node(int x, int y, int row, int col, int size, bool collidable, bool isTransparent);
 	virtual ~Node();
 	void draw();
+	void setParrentTile(Node* parrent);
+	void setStatus(NodeStatus status);
 
-
+	std::map<NeighbourDirection, Node*>& getNeighbourMap();
+	Node* getParrentTile();
+	NodeStatus getStatus() const;
 
 	int m_nodeSize;
 	glm::vec2 m_position;
@@ -28,6 +43,9 @@ public:
 	int m_h;
 
 	Label m_label;
+	NodeStatus m_status;
+	Node* m_parrentTile;
+	std::map<NeighbourDirection, Node*> m_neighbourMap;
 };
 
 

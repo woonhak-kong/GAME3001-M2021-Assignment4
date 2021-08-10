@@ -26,7 +26,8 @@ Character::Character(const LoaderParams& loader) :
 	m_ai(nullptr),
 	m_hitMotionNum(0),
 	m_alpha(255),
-	m_isDetectionRadius(false)
+	m_isDetectionRadius(false),
+	m_found(false)
 {
 	getRigidBody().setMass(5);
 	getRigidBody().getVelocity() = glm::vec2(0.0f, 0.0f);
@@ -254,7 +255,9 @@ glm::vec2 Character::getMiddlePosition()
 void Character::calculateF(glm::vec2 goal)
 {
 	int g, h, f;
-
+	m_tileList.clear();
+	m_tileList = getParent()->getNodeList();
+	m_tileList[goal.x][goal.y].setStatus(NodeStatus::GOAL);
 	for (int row = 0; row < m_tileList.size(); row++)
 	{
 		for (int col = 0; col < m_tileList[0].size(); col++)
@@ -270,7 +273,7 @@ void Character::calculateF(glm::vec2 goal)
 			m_tileList[row][col].m_label.getTransform().getPosition().x = m_tileList[row][col].m_x + Config::TILE_SIZE / 2;
 			m_tileList[row][col].m_label.getTransform().getPosition().y = m_tileList[row][col].m_y + Config::TILE_SIZE * 0.8f;
 		}
-		std::cout << std::endl;
+		//std::cout << std::endl;
 	}
 
 	//for (auto tile : m_tileList)
@@ -291,6 +294,115 @@ void Character::calculateF(glm::vec2 goal)
 	//	tile->setF(g + h);
 
 	//}
+}
+
+void Character::findAStarPath()
+{
+	Node* curTile = nullptr;
+	m_found = false;
+	m_closedTileList.clear();
+	m_openTileList.clear();
+	m_shortestTileList.clear(); // for moving
+	//curTile = getTileByGrid(m_player->getGridPosition());
+	//curTile->setF(0);
+	m_openTileList.push_back(&m_tileList[(this->getGroundCollision().y) / Config::TILE_SIZE][(this->getGroundCollision().x + 16) / Config::TILE_SIZE]);
+	m_openTileList[0]->setStatus(NodeStatus::OPEN);
+
+	int a = 0;
+	while (!m_openTileList.empty())
+	{
+		int cost = std::numeric_limits<int>::max();
+		int theLeastIdx = 0;
+		for (int i = 0; i < m_openTileList.size(); i++)
+		{
+			// find the least F cost tile
+			if (cost > m_openTileList[i]->m_f)
+			{
+				cost = m_openTileList[i]->m_f;
+				theLeastIdx = i;
+			}
+
+		}
+		curTile = m_openTileList[theLeastIdx];
+		m_closedTileList.push_back(curTile);
+		m_openTileList.erase(m_openTileList.begin() + theLeastIdx);
+
+		curTile->setStatus(NodeStatus::CLOSED);
+
+		// push back Neighbour of the least tile
+		//auto map = curTile->getNeighbourMap();
+		std::vector<Node*> neighbour;
+		neighbour.push_back(&(m_tileList[curTile->m_row-1][curTile->m_col]));
+		neighbour.push_back(&(m_tileList[curTile->m_row][curTile->m_col-1]));
+		neighbour.push_back(&(m_tileList[curTile->m_row+1][curTile->m_col]));
+		neighbour.push_back(&(m_tileList[curTile->m_row][curTile->m_col+1]));
+
+		for (auto& node : neighbour)
+		{
+
+		/*}
+		for (int i = 0; i < static_cast<int>(NeighbourDirection::NUM_OF_DIRECTION); i++)
+		{*/
+
+			Node* tmp = node;//map[static_cast<NeighbourDirection>(i)];
+
+			if (tmp != nullptr && tmp->getStatus() != NodeStatus::CLOSED && !tmp->m_isCollidable &&
+				!m_tileList[node->m_row - 1][node->m_col].m_isCollidable &&
+				!m_tileList[node->m_row ][node->m_col - 1].m_isCollidable&&
+				!m_tileList[node->m_row + 1][node->m_col].m_isCollidable&&
+				!m_tileList[node->m_row ][node->m_col + 1].m_isCollidable
+				)//   tmp->getTileStatus() != NodeStatus::IMPASSABLE)
+			{
+				bool exist = false;
+				// if there is no tile in openList;
+				for (auto tile : m_openTileList)
+				{
+					if (tile == tmp)
+					{
+						exist = true;
+						break;
+
+					}
+				}
+				if (!exist)
+				{
+					if (tmp->getStatus() == NodeStatus::GOAL)
+					{
+						// done
+						m_closedTileList.push_back(tmp);
+						tmp->setParrentTile(curTile);
+						m_openTileList.clear();
+						m_found = true;
+						break;
+					}
+					m_openTileList.push_back(tmp);
+					tmp->setStatus(NodeStatus::OPEN);
+					tmp->setParrentTile(curTile);
+				}
+			}
+		}
+	}
+
+	if (m_found)
+	{
+
+		Node* tmp = m_closedTileList.back();
+		while (tmp->getParrentTile() != nullptr)
+		{
+			//m_shortestTileList.insert(m_shortestTileList.begin(), tmp);
+			m_shortestTileList.push_back(tmp);
+			tmp->setStatus(NodeStatus::PATH);
+			tmp = tmp->getParrentTile();
+
+		}
+		//m_player->setShortestTile(m_shortestTileList);
+		for (auto tile : m_shortestTileList)
+		{
+			std::cout << "(" << tile->m_row << ", " << tile->m_col << ")" << std::endl;
+			tile->m_label.setText("**", { 0,255,0,255 });
+		}
+		std::cout << std::endl;
+	}
 }
 
 void Character::setIsAttacking(bool attacking)
@@ -390,7 +502,8 @@ void Character::moveToLeft()
 
 void Character::moveToUp()
 {
-
+	calculateF({ 5, 30 });
+	findAStarPath();
 	if (!m_isDead)
 	{
 		if (m_isJumping)

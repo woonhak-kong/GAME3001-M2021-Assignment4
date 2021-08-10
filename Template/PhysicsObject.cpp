@@ -99,6 +99,11 @@ float PhysicsObject::getFallingRate()
 	return m_fallingRate;
 }
 
+SDL_Rect PhysicsObject::getGroundCollision() const
+{
+	return m_groundCollisionRect;
+}
+
 void PhysicsObject::m_setGravity()
 {
 	getRigidBody().getVelocity().y += Config::GRAVITY * getRigidBody().getMass();

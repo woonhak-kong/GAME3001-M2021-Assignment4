@@ -15,6 +15,8 @@ public:
 	bool isOnGround();
 	float getFallingRate();
 
+	SDL_Rect getGroundCollision() const;
+
 private:
 
 	bool m_isCollision;
