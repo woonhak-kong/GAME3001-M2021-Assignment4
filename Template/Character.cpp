@@ -246,6 +246,59 @@ void Character::setAttackRectSize(int w, int h)
 
 }
 
+bool Character::moveToPath()
+{
+
+	if(!m_shortestTileList.empty())
+	{
+
+		int posX = m_shortestTileList.back()->m_x + Config::TILE_SIZE/2;
+		int posY = m_shortestTileList.back()->m_y + Config::TILE_SIZE / 2;
+		int groundCollisionX = getGroundCollision().x + getGroundCollision().w/2;
+		int groundCollisionY = getGroundCollision().y + getGroundCollision().h/2;
+
+		if(groundCollisionX > posX && groundCollisionY > posY)
+		{
+			moveToLeftUp();
+		}
+		else if (groundCollisionX > posX && groundCollisionY < posY)
+		{
+			moveToLeftDown();
+		}
+		else if (groundCollisionX < posX && groundCollisionY > posY)
+		{
+			moveToRightUp();
+		}
+		else if (groundCollisionX < posX && groundCollisionY < posY)
+		{
+			moveToRightDown();
+		}
+		else if (groundCollisionX > posX && abs(groundCollisionY - posY) < 1)
+		{
+			moveToLeft();
+		}
+		else if (groundCollisionX < posX && abs(groundCollisionY - posY) < 1)
+		{
+			moveToRight();
+		}
+		else if (groundCollisionY > posY && abs(groundCollisionX - posX) < 1)
+		{
+			moveToUp();
+		}
+		else if (groundCollisionY < posY && abs(groundCollisionX - posX) < 1)
+		{
+			moveToDown();
+		}
+
+		if (Util::distance({ groundCollisionX, groundCollisionY }, { posX, posY}) < 10)
+		{
+			m_shortestTileList.pop_back();
+		}
+		return true;
+	}
+	return false;
+}
+
 glm::vec2 Character::getMiddlePosition()
 {
 	glm::vec2 middlePosition(getTransform().getPosition().x + getWidth() * 0.5f, getTransform().getPosition().y + getHeight() * 0.5f);
@@ -269,9 +322,9 @@ void Character::calculateF(glm::vec2 goal)
 			m_tileList[row][col].m_f = g + h;
 			//std::cout << g << ", ";
 			//m_tileList[row][col].m_label.setText(std::to_string(m_tileList[row][col].m_f), {255,255,0,255});
-			m_tileList[row][col].m_label.setText(std::to_string(g+h), { 255,255,0,255 });
-			m_tileList[row][col].m_label.getTransform().getPosition().x = m_tileList[row][col].m_x + Config::TILE_SIZE / 2;
-			m_tileList[row][col].m_label.getTransform().getPosition().y = m_tileList[row][col].m_y + Config::TILE_SIZE * 0.8f;
+			//m_tileList[row][col].m_label.setText(std::to_string(row) + "," + std::to_string(col), {255,255,0,255});
+			//m_tileList[row][col].m_label.getTransform().getPosition().x = m_tileList[row][col].m_x + Config::TILE_SIZE / 2;
+			//m_tileList[row][col].m_label.getTransform().getPosition().y = m_tileList[row][col].m_y + Config::TILE_SIZE * 0.8f;
 		}
 		//std::cout << std::endl;
 	}
@@ -446,7 +499,9 @@ void Character::setNodeList(std::vector<std::vector<Node>> tileList)
 
 void Character::jump()
 {
-	if (!m_isDead)
+	calculateF({ 5, 30 });
+	findAStarPath();
+	/*if (!m_isDead)
 	{
 		if (!m_isJumping && !m_isAttacking && !m_isHit)
 		{
@@ -454,7 +509,7 @@ void Character::jump()
 			m_isJumping = true;
 			m_curState = CharacterState::JUMP;
 		}
-	}
+	}*/
 }
 
 void Character::moveToRight()
@@ -502,8 +557,7 @@ void Character::moveToLeft()
 
 void Character::moveToUp()
 {
-	calculateF({ 5, 30 });
-	findAStarPath();
+
 	if (!m_isDead)
 	{
 		if (m_isJumping)
@@ -564,6 +618,7 @@ void Character::moveToLeftUp()
 	{
 		if (!m_isAttacking && !m_isHit)
 		{
+
 			getRigidBody().getVelocity().x = -m_moveSpeed;
 			getRigidBody().getVelocity().y = -m_moveSpeed;
 

@@ -21,7 +21,9 @@ bool RadiusCondition::Condition()
 
 	if (distance <= m_pCharacter->getRadiusDistance())
 	{
+		m_pCharacter->setDetectionRadius(true);
 		return true;
 	}
+	m_pCharacter->setDetectionRadius(false);
 	return false;
 }

@@ -2,14 +2,16 @@
 #ifndef __DECISION_TREE__
 #define __DECISION_TREE__
 #include <map>
+#include <vector>
 
-#include "Character.h"
+#include "DisplayObject.h"
 #include "TreeNode.h"
 #include "TreeNodeType.h"
 
 class DecisionTree
 {
-	DecisionTree(Character* character);
+public:
+	DecisionTree();
 	~DecisionTree();
 
 	// getters and setters
@@ -29,8 +31,10 @@ class DecisionTree
 
 	void MakeDecision(); // in order traversal
 
+	std::vector<TreeNode*>& getTreeNodeList();
+
 private:
-	Agent* m_agent;
+	//Agent* m_agent;
 
 	/*LOSCondition* m_LOSNode;
 	RadiusCondition* m_RadiusNode;

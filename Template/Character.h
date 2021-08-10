@@ -65,6 +65,8 @@ public:
 	void makingAttackCollisionBox(SwordType type = SwordType::NONE);
 	void setAttackRectSize(int w, int h);
 
+	bool moveToPath();
+
 
 	glm::vec2 getMiddlePosition();
 	void calculateF(glm::vec2 goal);

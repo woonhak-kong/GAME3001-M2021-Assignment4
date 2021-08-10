@@ -301,6 +301,12 @@
     <ClInclude Include="NodeStatus.h">
       <Filter>Enums</Filter>
     </ClInclude>
+    <ClInclude Include="PatrolAction.h">
+      <Filter>AI\Decision\Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="MoveToLOSAction.h">
+      <Filter>AI\Decision\Actions</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameObject.cpp">
@@ -481,6 +487,12 @@
       <Filter>AI\Decision\Conditions</Filter>
     </ClCompile>
     <ClCompile Include="AttackAction.cpp">
+      <Filter>AI\Decision\Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="PatrolAction.cpp">
+      <Filter>AI\Decision\Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="MoveToLOSAction.cpp">
       <Filter>AI\Decision\Actions</Filter>
     </ClCompile>
   </ItemGroup>

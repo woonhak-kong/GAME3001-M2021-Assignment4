@@ -157,13 +157,13 @@ void Player::draw()
 		Util::DrawLine(getMiddlePosition(), getMiddlePosition() + getCurrentDirection() * getLOSDistance(), getLOSColour());
 	}
 
-	for (int row = 0; row < m_tileList.size(); row++)
-	{
-		for (int col = 0; col < m_tileList[0].size(); col++)
-		{
-			m_tileList[row][col].m_label.draw();
-		}
-	}
+	//for (int row = 0; row < m_tileList.size(); row++)
+	//{
+	//	for (int col = 0; col < m_tileList[0].size(); col++)
+	//	{
+	//		m_tileList[row][col].m_label.draw();
+	//	}
+	//}
 }
 
 void Player::update()
@@ -173,6 +173,8 @@ void Player::update()
 	m_pWeapon->getTransform().getPosition() = getMiddlePosition() + getCurrentDirection() * 30.f;
 	//std::cout << Util::signedAngle({ 0,-1 }, getCurrentDirection()) << std::endl;
 	m_pWeapon->setCurrentHeading(Util::signedAngle({ 0,-1 }, getCurrentDirection()));
+
+	moveToPath();
 }
 
 void Player::clean()
@@ -226,7 +228,6 @@ void Player::handleEvent()
 	{
 		moveToDown();
 	}
-
 	else
 	{
 		idle();
@@ -273,7 +274,7 @@ void Player::handleEvent()
 
 	if (EventManager::Instance().isKeyDown(SDL_SCANCODE_F))
 	{
-
+		//jump();
 
 	}
 	if (EventManager::Instance().isKeyDown(SDL_SCANCODE_Q))
