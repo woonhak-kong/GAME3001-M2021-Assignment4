@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="80" height="45" tilewidth="16" tileheight="16" infinite="0" nextlayerid="22" nextobjectid="160">
+<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="80" height="45" tilewidth="16" tileheight="16" infinite="0" nextlayerid="23" nextobjectid="164">
  <properties>
   <property name="Player" value="player.png"/>
  </properties>
@@ -246,6 +246,19 @@
  <objectgroup id="21" name="monst1">
   <properties>
    <property name="heightOfTexture" type="int" value="32"/>
+   <property name="id" value="demon"/>
+   <property name="maxHp" type="int" value="300"/>
+   <property name="power" type="int" value="20"/>
+   <property name="realHeight" type="int" value="32"/>
+   <property name="realWidth" type="int" value="32"/>
+   <property name="widthOfTexture" type="int" value="32"/>
+  </properties>
+  <object id="159" x="801" y="575"/>
+  <object id="161" x="907" y="110"/>
+ </objectgroup>
+ <objectgroup id="22" name="monst2">
+  <properties>
+   <property name="heightOfTexture" type="int" value="32"/>
    <property name="id" value="zombie"/>
    <property name="maxHp" type="int" value="300"/>
    <property name="power" type="int" value="20"/>
@@ -253,7 +266,8 @@
    <property name="realWidth" type="int" value="32"/>
    <property name="widthOfTexture" type="int" value="32"/>
   </properties>
-  <object id="159" x="640" y="520"/>
+  <object id="162" x="1172" y="328"/>
+  <object id="163" x="1119" y="462"/>
  </objectgroup>
  <layer id="16" name="back_layer2" width="80" height="45">
   <properties>

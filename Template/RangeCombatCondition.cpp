@@ -19,7 +19,7 @@ bool RangeCombatCondition::Condition()
 	//glm::vec2 direction = playerPosition - selfPosition;
 	float distance = Util::distance(selfPosition, playerPosition);
 
-	if (distance <= 200.f)
+	if (distance <= 300.f)
 	{
 		return true;
 	}

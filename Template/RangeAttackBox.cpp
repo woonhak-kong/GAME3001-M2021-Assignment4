@@ -11,24 +11,50 @@ RangeAttackBox::RangeAttackBox(int x, int y, int w, int h, int power, GameObject
 	Animation animation = Animation();
 	Frame frame;
 	glm::vec2 size;
-	std::string animationName = "arrow1";
 
-	TextureManager::Instance().load("assets/particles/arrow1.png", "arrow1");
-	size = glm::vec2(100, 100);
-
-	animation.name = "arrow1";
-	for (int i = 0; i < 30; ++i)
+	if(GameObjectType::PLAYER_RANGE_ATTACK == attackType)
 	{
-		frame.name = "arrow1";
-		frame.x = size.x * i;
-		frame.y = 0;
-		frame.w = size.x;
-		frame.h = size.y;
-		animation.frames.push_back(frame);
+		std::string animationName = "arrow1";
+
+		TextureManager::Instance().load("assets/particles/arrow1.png", "arrow1");
+		size = glm::vec2(100, 100);
+
+		animation.name = "arrow1";
+		for (int i = 0; i < 30; ++i)
+		{
+			frame.name = "arrow1";
+			frame.x = size.x * i;
+			frame.y = 0;
+			frame.w = size.x;
+			frame.h = size.y;
+			animation.frames.push_back(frame);
+		}
+		TextureManager::Instance().setAnimation(animationName, animation);
+		animation.frames.clear();
+		setAnimation(TextureManager::Instance().getAnimation("arrow1"));
 	}
-	TextureManager::Instance().setAnimation(animationName, animation);
-	animation.frames.clear();
-	setAnimation(TextureManager::Instance().getAnimation("arrow1"));
+	else if(GameObjectType::ENEMY_RANGE_ATTACK== attackType)
+	{
+		std::string animationName = "arrow2";
+
+		TextureManager::Instance().load("assets/particles/arrow2.png", "arrow2");
+		size = glm::vec2(100, 100);
+
+		animation.name = "arrow2";
+		for (int i = 0; i < 30; ++i)
+		{
+			frame.name = "arrow2";
+			frame.x = size.x * i;
+			frame.y = 0;
+			frame.w = size.x;
+			frame.h = size.y;
+			animation.frames.push_back(frame);
+		}
+		TextureManager::Instance().setAnimation(animationName, animation);
+		animation.frames.clear();
+		setAnimation(TextureManager::Instance().getAnimation("arrow2"));
+	}
+
 
 
 	m_power = power;
@@ -45,19 +71,38 @@ RangeAttackBox::~RangeAttackBox()
 
 void RangeAttackBox::draw()
 {
-	TextureManager::Instance().playAnimation(getAnimation("arrow1"), getTransform().getPosition().x - Camera::Instance().getPosition().x,
-		getTransform().getPosition().y - Camera::Instance().getPosition().y, getWidth(), getHeight(), 4.f, getCurrentHeading(), 255, SDL_FLIP_NONE, true, [&](CallbackType type) -> void
-		{
-			switch (type)
+	if (GameObjectType::PLAYER_RANGE_ATTACK == getType())
+	{
+		TextureManager::Instance().playAnimation(getAnimation("arrow1"), getTransform().getPosition().x - Camera::Instance().getPosition().x,
+			getTransform().getPosition().y - Camera::Instance().getPosition().y, getWidth(), getHeight(), 4.f, getCurrentHeading(), 255, SDL_FLIP_NONE, true, [&](CallbackType type) -> void
 			{
-				case CallbackType::ATTACK_BOX:
-					break;
-				case CallbackType::ANIMATION_END:
-					break;
-				default:
-					break;
-			}
-		});
+				switch (type)
+				{
+					case CallbackType::ATTACK_BOX:
+						break;
+					case CallbackType::ANIMATION_END:
+						break;
+					default:
+						break;
+				}
+			});
+	}
+	else if (GameObjectType::ENEMY_RANGE_ATTACK == getType())
+	{
+		TextureManager::Instance().playAnimation(getAnimation("arrow2"), getTransform().getPosition().x - Camera::Instance().getPosition().x,
+			getTransform().getPosition().y - Camera::Instance().getPosition().y, getWidth(), getHeight(), 4.f, getCurrentHeading(), 255, SDL_FLIP_NONE, true, [&](CallbackType type) -> void
+			{
+				switch (type)
+				{
+					case CallbackType::ATTACK_BOX:
+						break;
+					case CallbackType::ANIMATION_END:
+						break;
+					default:
+						break;
+				}
+			});
+	}
 }
 
 void RangeAttackBox::update()

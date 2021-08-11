@@ -313,6 +313,12 @@
     <ClInclude Include="FleeAction.h">
       <Filter>AI\Decision\Actions</Filter>
     </ClInclude>
+    <ClInclude Include="EnemyHuman2.h">
+      <Filter>GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="RangeEnemyAI.h">
+      <Filter>AI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameObject.cpp">
@@ -506,6 +512,12 @@
     </ClCompile>
     <ClCompile Include="FleeAction.cpp">
       <Filter>AI\Decision\Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyHuman2.cpp">
+      <Filter>GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="RangeEnemyAI.cpp">
+      <Filter>AI</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

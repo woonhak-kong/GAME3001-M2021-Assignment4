@@ -10,6 +10,7 @@
 #include "Config.h"
 #include "Door.h"
 #include "EnemyHuman1.h"
+#include "EnemyHuman2.h"
 #include "EnemyKnight.h"
 #include "EnemyType.h"
 #include "GameObjectFactory.h"
@@ -204,6 +205,12 @@ void LevelParser::parseObjectLayer(TiXmlElement* pObjectElement, Scene* scene)
                 EnemyHuman1* enemy = new EnemyHuman1(loader);
                 enemy->setNodeList(scene->getNodeList());
                 scene->addChild(enemy,4 );
+            }
+            else if (ID == "demon")
+            {
+                EnemyHuman2* enemy = new EnemyHuman2(loader);
+                enemy->setNodeList(scene->getNodeList());
+                scene->addChild(enemy, 4);
             }
             else if (ID == EnemyType::Boss1)
             {

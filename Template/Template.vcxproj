@@ -179,6 +179,7 @@ xcopy "$(ProjectDir)assets" "$(TargetDir)assets" /s /h /e /d /y /i</Command>
     <ClInclude Include="ConditionNode.h" />
     <ClInclude Include="DecisionTree.h" />
     <ClInclude Include="Door.h" />
+    <ClInclude Include="EnemyHuman2.h" />
     <ClInclude Include="EnemyHumanAI.h" />
     <ClInclude Include="EnergyBar.h" />
     <ClInclude Include="Explosion.h" />
@@ -195,6 +196,7 @@ xcopy "$(ProjectDir)assets" "$(TargetDir)assets" /s /h /e /d /y /i</Command>
     <ClInclude Include="RadiusCondition.h" />
     <ClInclude Include="RangeAttackBox.h" />
     <ClInclude Include="RangeCombatCondition.h" />
+    <ClInclude Include="RangeEnemyAI.h" />
     <ClInclude Include="ScoreManager.h" />
     <ClInclude Include="SoundID.h" />
     <ClInclude Include="Sword.h" />
@@ -269,6 +271,7 @@ xcopy "$(ProjectDir)assets" "$(TargetDir)assets" /s /h /e /d /y /i</Command>
     <ClCompile Include="Door.cpp" />
     <ClCompile Include="EndScene.cpp" />
     <ClCompile Include="EnemyHuman1.cpp" />
+    <ClCompile Include="EnemyHuman2.cpp" />
     <ClCompile Include="EnemyHumanAI.cpp" />
     <ClCompile Include="EnemyKnight.cpp" />
     <ClCompile Include="EnergyBar.cpp" />
@@ -299,6 +302,7 @@ xcopy "$(ProjectDir)assets" "$(TargetDir)assets" /s /h /e /d /y /i</Command>
     <ClCompile Include="RadiusCondition.cpp" />
     <ClCompile Include="RangeAttackBox.cpp" />
     <ClCompile Include="RangeCombatCondition.cpp" />
+    <ClCompile Include="RangeEnemyAI.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="ScoreManager.cpp" />
     <ClCompile Include="SoundManager.cpp" />

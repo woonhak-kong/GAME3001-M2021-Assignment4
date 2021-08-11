@@ -10,6 +10,9 @@ Weapon::Weapon(WeaponType type) :
 		case WeaponType::WAND1:
 			TextureManager::Instance().load("assets/objects/wand1.png", "wand1");
 			break;
+		case WeaponType::WAND2:
+			TextureManager::Instance().load("assets/objects/wand2.png", "wand2");
+			break;
 		case WeaponType::SWORD1:
 			TextureManager::Instance().load("assets/objects/hammer1.png", "sword1");
 			break;
@@ -26,6 +29,9 @@ void Weapon::draw()
 	{
 		case WeaponType::WAND1:
 			TextureManager::Instance().draw("wand1", getTransform().getPosition().x, getTransform().getPosition().y, getCurrentHeading(), 255, true, SDL_FLIP_NONE);
+			break;
+		case WeaponType::WAND2:
+			TextureManager::Instance().draw("wand2", getTransform().getPosition().x, getTransform().getPosition().y, getCurrentHeading(), 255, true, SDL_FLIP_NONE);
 			break;
 		case WeaponType::SWORD1:
 			TextureManager::Instance().draw("sword1", getTransform().getPosition().x, getTransform().getPosition().y, getCurrentHeading(), 255, true, SDL_FLIP_NONE);
