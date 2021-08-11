@@ -6,6 +6,7 @@
 #include "Config.h"
 #include "EnemyHumanAI.h"
 #include "Explosion.h"
+#include "Game.h"
 #include "RangeAttackBox.h"
 #include "Scene.h"
 #include "ScoreManager.h"
@@ -18,7 +19,8 @@
 
 EnemyHuman1::EnemyHuman1(const LoaderParams& loader) :
 	Character(loader),
-	m_pWeapon(nullptr)
+	m_pWeapon(nullptr),
+	m_attackDelay(10)
 {
 
 	Animation animation = Animation();
@@ -138,8 +140,12 @@ void EnemyHuman1::draw()
 		{
 			Util::DrawCircle(getCenterPosition(), getRadiusDistance());
 		}
-
+		for (auto tile : m_shortestTileList)
+		{
+			tile->m_label.draw();
+		}
 	}
+
 }
 
 void EnemyHuman1::update()
@@ -193,14 +199,19 @@ void EnemyHuman1::die()
 
 void EnemyHuman1::attack()
 {
-	glm::vec2 attackPositionVec = getMiddlePosition() + getCurrentDirection() * 50.f;
-	SDL_Rect attackPosition;
-	getRigidBody().getVelocity().x = 0;
-	getRigidBody().getVelocity().y = 0;
-	attackPosition.x = attackPositionVec.x - 30;
-	attackPosition.y = attackPositionVec.y - 30;
-	attackPosition.w = 60;
-	attackPosition.h = 60;
-	getParent()->addChildDuringUpdating(new AttackBox(attackPosition, { 0,0 }, 0, GameObjectType::ENEMY_ATTACK, 50, getCurrentDirection().x < 0 ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE));
-	SoundManager::Instance().playSound("attack");
+	m_attackDelay += Game::Instance().getDeltaTime();
+	if (m_attackDelay > 1)
+	{
+		glm::vec2 attackPositionVec = getMiddlePosition() + getCurrentDirection() * 50.f;
+		SDL_Rect attackPosition;
+		getRigidBody().getVelocity().x = 0;
+		getRigidBody().getVelocity().y = 0;
+		attackPosition.x = attackPositionVec.x - 30;
+		attackPosition.y = attackPositionVec.y - 30;
+		attackPosition.w = 60;
+		attackPosition.h = 60;
+		getParent()->addChildDuringUpdating(new AttackBox(attackPosition, { 0,0 }, 0, GameObjectType::ENEMY_ATTACK, 50, getCurrentDirection().x < 0 ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE));
+		SoundManager::Instance().playSound("attack");
+		m_attackDelay = 0;
+	}
 }

@@ -58,7 +58,7 @@ void DecisionTree::MakeDecision()
 	// return currentNode->name; // Print out action's name.
 	if(m_pPrevNode != nullptr && m_pPrevNode != currentNode)
 	{
-		dynamic_cast<ActionNode*>(m_pPrevNode)->setActionDone(true);
+		//dynamic_cast<ActionNode*>(m_pPrevNode)->setActionDone(true);
 	}
 	dynamic_cast<ActionNode*>(currentNode)->Action();
 	m_pPrevNode = currentNode;

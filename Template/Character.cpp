@@ -258,7 +258,23 @@ bool Character::moveToPath()
 		int groundCollisionX = getGroundCollision().x + getGroundCollision().w/2;
 		int groundCollisionY = getGroundCollision().y + getGroundCollision().h/2;
 
-		if(groundCollisionX > posX && groundCollisionY > posY)
+		if (groundCollisionX > posX && abs(groundCollisionY - posY) < 3)
+		{
+			moveToLeft();
+		}
+		else if (groundCollisionX < posX && abs(groundCollisionY - posY) < 3)
+		{
+			moveToRight();
+		}
+		else if (groundCollisionY > posY && abs(groundCollisionX - posX) < 3)
+		{
+			moveToUp();
+		}
+		else if (groundCollisionY < posY && abs(groundCollisionX - posX) < 3)
+		{
+			moveToDown();
+		}
+		else if (groundCollisionX > posX && groundCollisionY > posY)
 		{
 			moveToLeftUp();
 		}
@@ -274,22 +290,7 @@ bool Character::moveToPath()
 		{
 			moveToRightDown();
 		}
-		else if (groundCollisionX > posX && abs(groundCollisionY - posY) < 1)
-		{
-			moveToLeft();
-		}
-		else if (groundCollisionX < posX && abs(groundCollisionY - posY) < 1)
-		{
-			moveToRight();
-		}
-		else if (groundCollisionY > posY && abs(groundCollisionX - posX) < 1)
-		{
-			moveToUp();
-		}
-		else if (groundCollisionY < posY && abs(groundCollisionX - posX) < 1)
-		{
-			moveToDown();
-		}
+
 
 		if (Util::distance({ groundCollisionX, groundCollisionY }, { posX, posY}) < 10)
 		{
@@ -336,8 +337,8 @@ void Character::calculateF(glm::vec2 goal)
 			//std::cout << g << ", ";
 			//m_tileList[row][col].m_label.setText(std::to_string(m_tileList[row][col].m_f), {255,255,0,255});
 			//m_tileList[row][col].m_label.setText(std::to_string(row) + "," + std::to_string(col), {255,255,0,255});
-			//m_tileList[row][col].m_label.getTransform().getPosition().x = m_tileList[row][col].m_x + Config::TILE_SIZE / 2;
-			//m_tileList[row][col].m_label.getTransform().getPosition().y = m_tileList[row][col].m_y + Config::TILE_SIZE * 0.8f;
+			/*m_tileList[row][col].m_label.getTransform().getPosition().x = m_tileList[row][col].m_x + Config::TILE_SIZE / 2;
+			m_tileList[row][col].m_label.getTransform().getPosition().y = m_tileList[row][col].m_y + Config::TILE_SIZE * 0.8f;*/
 		}
 		//std::cout << std::endl;
 	}
@@ -368,6 +369,10 @@ void Character::findAStarPath()
 	m_found = false;
 	m_closedTileList.clear();
 	m_openTileList.clear();
+	for (auto tile : m_shortestTileList)
+	{
+		tile->m_label.setText("");
+	}
 	m_shortestTileList.clear(); // for moving
 	//curTile = getTileByGrid(m_player->getGridPosition());
 	//curTile->setF(0);
@@ -461,12 +466,21 @@ void Character::findAStarPath()
 			tmp = tmp->getParrentTile();
 
 		}
+		// delete last thing
+		m_shortestTileList.pop_back();
 		//m_player->setShortestTile(m_shortestTileList);
-		//for (auto tile : m_shortestTileList)
+		//for (auto& node : m_tileList)
 		//{
-		//	//std::cout << "(" << tile->m_row << ", " << tile->m_col << ")" << std::endl;
-		//	tile->m_label.setText("**", { 0,255,0,255 });
+		//	for (auto& value : node)
+		//	{
+		//		value.m_label.setText("");
+		//	}
 		//}
+		for (auto tile : m_shortestTileList)
+		{
+			//std::cout << "(" << tile->m_row << ", " << tile->m_col << ")" << std::endl;
+			tile->m_label.setText("**", { 0,255,0,255 });
+		}
 		//std::cout << std::endl;
 	}
 }

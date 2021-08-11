@@ -25,6 +25,7 @@ public:
 
 private:
 	Weapon* m_pWeapon;
+	float m_attackDelay;
 
 };
 

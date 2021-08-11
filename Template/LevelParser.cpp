@@ -333,6 +333,9 @@ void LevelParser::parseTileLayer(TiXmlElement* pTileElement, std::vector<Layer*>
 				scene->getNodeList()[rows][cols].m_isCollidable = collidable;
         	if(isTransparent && ids[rows * m_width + cols] != 0)
 				scene->getNodeList()[rows][cols].m_isTransparent = isTransparent;
+
+            scene->getNodeList()[rows][cols].m_label.getTransform().getPosition().x = scene->getNodeList()[rows][cols].m_x + m_tileSize / 2;
+            scene->getNodeList()[rows][cols].m_label.getTransform().getPosition().y = scene->getNodeList()[rows][cols].m_y + m_tileSize * 0.8f;
         }
     }
 
