@@ -187,7 +187,7 @@ void EnemyHuman2::hit()
 {
 	if (!isHit())
 	{
-		SoundManager::Instance().playSound(SoundID::HIT);
+		//SoundManager::Instance().playSound(SoundID::HIT);
 	}
 	Character::hit();
 }
@@ -208,7 +208,7 @@ void EnemyHuman2::attack()
 
 
 		glm::vec2 position = getMiddlePosition() + getCurrentDirection() * 50.f;
-		RangeAttackBox* attackBox = new RangeAttackBox(position.x - 20, position.y - 20, 40, 40, 20, GameObjectType::ENEMY_RANGE_ATTACK);
+		RangeAttackBox* attackBox = new RangeAttackBox(position.x - 20, position.y - 20, 40, 40, 5, GameObjectType::ENEMY_RANGE_ATTACK);
 		attackBox->setCurrentHeading(Util::signedAngle({ 1,0 }, getCurrentDirection()));
 		getParent()->addChildDuringUpdating(attackBox);
 		SoundManager::Instance().playSound("fire");

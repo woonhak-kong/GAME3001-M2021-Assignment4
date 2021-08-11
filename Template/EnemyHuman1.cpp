@@ -210,7 +210,7 @@ void EnemyHuman1::attack()
 		attackPosition.y = attackPositionVec.y - 30;
 		attackPosition.w = 60;
 		attackPosition.h = 60;
-		getParent()->addChildDuringUpdating(new AttackBox(attackPosition, { 0,0 }, 0, GameObjectType::ENEMY_ATTACK, 50, getCurrentDirection().x < 0 ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE));
+		getParent()->addChildDuringUpdating(new AttackBox(attackPosition, { 0,0 }, 0, GameObjectType::ENEMY_ATTACK, 10, getCurrentDirection().x < 0 ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE));
 		SoundManager::Instance().playSound("attack");
 		m_attackDelay = 0;
 	}

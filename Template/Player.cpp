@@ -17,7 +17,8 @@ Player::Player(const LoaderParams& loader) :
 	Character(loader),
 	m_pWeapon(nullptr),
 	m_isLeftClick(false),
-	m_isRightClick(false)
+	m_isRightClick(false),
+	m_gameOver(false)
 {
 
 	Animation animation = Animation();
@@ -61,6 +62,7 @@ Player::Player(const LoaderParams& loader) :
 
 	setLOSDistance(300.f);
 	setHasLOS(false);
+	setType(GameObjectType::PLAYER);
 }
 
 Player::~Player()
@@ -106,17 +108,17 @@ void Player::draw()
 	{
 		case CharacterState::IDLE:
 			TextureManager::Instance().playAnimation(getAnimation("idle"), getTransform().getPosition().x,
-				getTransform().getPosition().y, getWidth(), getHeight(), 0.5f, 0.0f, alpha, flip);
+				getTransform().getPosition().y, getWidth(), getHeight(), 0.5f, 0.0f, getAlpha(), flip);
 
 			break;
 		case CharacterState::RUN:
 			TextureManager::Instance().playAnimation(getAnimation("run"), getTransform().getPosition().x,
-				getTransform().getPosition().y, getWidth(), getHeight(), 0.5f, 0.0f, alpha, flip);
+				getTransform().getPosition().y, getWidth(), getHeight(), 0.5f, 0.0f, getAlpha(), flip);
 
 			break;
 		case CharacterState::ATTACK:
 			TextureManager::Instance().playAnimation(getAnimation("attack2"), getTransform().getPosition().x,
-				getTransform().getPosition().y, getWidth(), getHeight(), getAttackSpeed(), 0.0f, alpha, flip, true, [&](CallbackType type) -> void
+				getTransform().getPosition().y, getWidth(), getHeight(), getAttackSpeed(), 0.0f, getAlpha(), flip, true, [&](CallbackType type) -> void
 				{
 					switch (type)
 					{
@@ -132,13 +134,13 @@ void Player::draw()
 				}, 3);
 			break;
 		case CharacterState::DEAD:
-			TextureManager::Instance().playAnimation(getAnimation("die"), getTransform().getPosition().x,
-				getTransform().getPosition().y, getWidth(), getHeight(), 0.5f, 0.0f, alpha, flip, false, [&](CallbackType type) -> void
+			TextureManager::Instance().playAnimation(getAnimation("idle"), getTransform().getPosition().x,
+				getTransform().getPosition().y, getWidth(), getHeight(), 0.5f, 0.0f, getAlpha(), flip, false, [&](CallbackType type) -> void
 				{
 					switch (type)
 					{
 						case CallbackType::ANIMATION_END:
-							//m_gameOver = true;
+							m_gameOver = true;
 							break;
 						default:
 							break;
@@ -184,14 +186,38 @@ void Player::clean()
 
 void Player::collision(DisplayObject* obj)
 {
+
+	if (obj->getType() == GameObjectType::ENEMY_ATTACK && !isHit())
+	{
+		takeDamage(dynamic_cast<AttackBox*>(obj)->getAttackPower());
+		//dynamic_cast<AttackBox*>(obj)->deleteAttackBox();
+		//std::cout << " aaa" << std::endl;
+	}
+	else if (obj->getType() == GameObjectType::ENEMY_RANGE_ATTACK)
+	{
+		if (!isHit())
+		{
+			takeDamage(dynamic_cast<RangeAttackBox*>(obj)->getPower());
+		}
+		getParent()->addChildRemoving(obj);
+	}
 }
 
 void Player::hit()
 {
+	if (!m_isDead)
+	{
+		//m_curState = CharacterState::HIT;
+		m_isHit = true;
+		m_isAttacking = false;
+		m_hitMotionNum = 20;
+		//getRigidBody().getVelocity().x = 0;
+	}
 }
 
 void Player::die()
 {
+	Character::die();
 }
 
 void Player::handleEvent()
@@ -290,4 +316,9 @@ void Player::handleEvent()
 	{
 		//m_isQEPushed = false;
 	}
+}
+
+bool Player::getGameOver() const
+{
+	return m_gameOver;
 }

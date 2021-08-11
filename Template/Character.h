@@ -73,7 +73,7 @@ public:
 	void findAStarPath();
 
 
-private:
+protected:
 	bool m_isJumping;
 	bool m_isAttacking;
 	bool m_isDead;

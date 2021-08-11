@@ -9,6 +9,7 @@
 #include "EventManager.h"
 #include "Game.h"
 #include "Label.h"
+#include "Player.h"
 #include "ScoreManager.h"
 #include "SoundID.h"
 #include "SoundManager.h"
@@ -74,6 +75,11 @@ void PlayScene1::update()
 				}
 			}
 		}
+	}
+	if(dynamic_cast<Player*>(getPlayer())->getGameOver())
+	{
+		std::cout << " aaa" << std::endl;
+		Game::Instance().changeSceneState(SceneState::END_SCENE);
 	}
 
 

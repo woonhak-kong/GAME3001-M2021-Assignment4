@@ -18,12 +18,14 @@ public:
 
 	void handleEvent();
 
+	bool getGameOver() const;
+
 private:
 
 	Weapon* m_pWeapon;
 	bool m_isLeftClick;
 	bool m_isRightClick;
-
+	bool m_gameOver;
 };
 
 #endif // __PLAYER__
