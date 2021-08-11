@@ -1,5 +1,6 @@
 #include "FleeAction.h"
 
+#include "Game.h"
 #include "Scene.h"
 #include "Util.h"
 
@@ -26,6 +27,7 @@ FleeAction::FleeAction(Character* character) :
 
 	m_curPatrolGoalIDX = 0;
 	m_preShortestIDX = 99;
+	m_waitingTime = 0;
 }
 
 FleeAction::~FleeAction()
@@ -63,7 +65,14 @@ void FleeAction::Action()
 	{
 		if (!m_pCharacter->moveToPath())
 		{
-			m_isActionDone = true;
+			m_waitingTime += Game::Instance().getDeltaTime();
+			m_pCharacter->idle();
+			if(m_waitingTime > 2)
+			{
+				m_isActionDone = true;
+				m_waitingTime = 0;
+			}
+
 		}
 	}
 }

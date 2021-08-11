@@ -12,6 +12,8 @@ public:
 	std::vector<glm::vec2> m_patrolPlaces;
 	int m_curPatrolGoalIDX;
 	int m_preShortestIDX;
+
+	float m_waitingTime;
 };
 
 #endif // __ACTION_NODE__
