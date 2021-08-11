@@ -82,6 +82,10 @@ void PlayScene1::update()
 		Game::Instance().changeSceneState(SceneState::END_SCENE);
 	}
 
+	if(ScoreManager::getScore() > 20)
+	{
+		Game::Instance().changeSceneState(SceneState::CLEAR_SCENE);
+	}
 
 }
 
