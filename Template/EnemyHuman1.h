@@ -19,6 +19,7 @@ public:
 	void hit() override;
 	void die() override;
 
+	void attack() override;
 
 
 

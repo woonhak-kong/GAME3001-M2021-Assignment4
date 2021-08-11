@@ -59,7 +59,7 @@ public:
 	void moveToRightDown();
 	void moveToLeftDown();
 	void idle();
-	void attack();
+	virtual void attack();
 	virtual void hit();
 	virtual void die();
 	void makingAttackCollisionBox(SwordType type = SwordType::NONE);

@@ -14,6 +14,11 @@ public:
 	void setCharacter(Character* character) {
 		m_pCharacter = character;
 	}
+	void setActionDone(bool state)
+	{
+		std::cout << "actionDone" << std::endl;
+		m_isActionDone = state;
+	}
 
 protected:
 	Character* m_pCharacter;

@@ -183,6 +183,7 @@ xcopy "$(ProjectDir)assets" "$(TargetDir)assets" /s /h /e /d /y /i</Command>
     <ClInclude Include="EnergyBar.h" />
     <ClInclude Include="Explosion.h" />
     <ClInclude Include="ExplosionType.h" />
+    <ClInclude Include="FleeAction.h" />
     <ClInclude Include="LOSCondition.h" />
     <ClInclude Include="LowHealthCondition.h" />
     <ClInclude Include="MoveToLOSAction.h" />
@@ -273,6 +274,7 @@ xcopy "$(ProjectDir)assets" "$(TargetDir)assets" /s /h /e /d /y /i</Command>
     <ClCompile Include="EnergyBar.cpp" />
     <ClCompile Include="EventManager.cpp" />
     <ClCompile Include="Explosion.cpp" />
+    <ClCompile Include="FleeAction.cpp" />
     <ClCompile Include="FontManager.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObject.cpp" />

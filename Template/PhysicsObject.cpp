@@ -1,7 +1,7 @@
 #include "PhysicsObject.h"
 
 #include <algorithm>
-
+#include <functional>
 #include "Camera.h"
 #include "CollisionManager.h"
 #include "Config.h"
@@ -51,12 +51,25 @@ void PhysicsObject::update()
 	newCollidePosition.h = m_groundCollisionRect.h;
 
 
+	std::function<float(float)> tmpFunc;
+	if(getRigidBody().getVelocity().x < 0 || getRigidBody().getVelocity().y < 0)
+	{
+		tmpFunc = [](float val)  -> float {
+			return floor(val);
+		};
+	}
+	else
+	{
+		tmpFunc = [](float val)  -> float {
+			return ceil(val);
+		};
+	}
 
 
-	newCollidePosition.x = floor(m_groundCollisionRect.x + getRigidBody().getVelocity().x * Game::Instance().getDeltaTime());
+	newCollidePosition.x = tmpFunc(m_groundCollisionRect.x + getRigidBody().getVelocity().x * Game::Instance().getDeltaTime());
 	if (!CollisionManager::checkCollideTile(newCollidePosition, getParent()->getNodeList()))
 	{
-		getTransform().getPosition().x = floor(getTransform().getPosition().x + getRigidBody().getVelocity().x * Game::Instance().getDeltaTime());
+		getTransform().getPosition().x = tmpFunc(getTransform().getPosition().x + getRigidBody().getVelocity().x * Game::Instance().getDeltaTime());
 	}
 	else
 	{
@@ -64,10 +77,10 @@ void PhysicsObject::update()
 	}
 
 
-	newCollidePosition.y = floor(m_groundCollisionRect.y + getRigidBody().getVelocity().y * Game::Instance().getDeltaTime());
+	newCollidePosition.y = tmpFunc(m_groundCollisionRect.y + getRigidBody().getVelocity().y * Game::Instance().getDeltaTime());
 	if (!CollisionManager::checkCollideTile(newCollidePosition, getParent()->getNodeList()))
 	{
-		getTransform().getPosition().y = floor(getTransform().getPosition().y + getRigidBody().getVelocity().y * Game::Instance().getDeltaTime());
+		getTransform().getPosition().y = tmpFunc(getTransform().getPosition().y + getRigidBody().getVelocity().y * Game::Instance().getDeltaTime());
 	}
 	else
 	{

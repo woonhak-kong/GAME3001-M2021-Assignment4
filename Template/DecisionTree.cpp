@@ -3,7 +3,8 @@
 #include "ActionNode.h"
 #include "ConditionNode.h"
 
-DecisionTree::DecisionTree()
+DecisionTree::DecisionTree():
+	m_pPrevNode(nullptr)
 {
 }
 
@@ -55,7 +56,13 @@ void DecisionTree::MakeDecision()
 		currentNode = dynamic_cast<ConditionNode*>(currentNode)->Condition() ? (currentNode->Right) : (currentNode->Left);
 	}
 	// return currentNode->name; // Print out action's name.
-	return static_cast<ActionNode*>(currentNode)->Action();
+	if(m_pPrevNode != nullptr && m_pPrevNode != currentNode)
+	{
+		dynamic_cast<ActionNode*>(m_pPrevNode)->setActionDone(true);
+	}
+	dynamic_cast<ActionNode*>(currentNode)->Action();
+	m_pPrevNode = currentNode;
+
 }
 
 std::vector<TreeNode*>& DecisionTree::getTreeNodeList()

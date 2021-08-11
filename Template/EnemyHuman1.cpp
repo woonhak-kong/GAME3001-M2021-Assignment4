@@ -72,6 +72,7 @@ EnemyHuman1::EnemyHuman1(const LoaderParams& loader) :
 	setRadiusDistance(300.f);
 	m_pWeapon->setCurrentHeading(0.f);
 	setCurrentDirection({1,0});
+	setMoveSpeed(80);
 }
 
 EnemyHuman1::~EnemyHuman1()
@@ -188,4 +189,18 @@ void EnemyHuman1::die()
 {
 
 	Character::die();
+}
+
+void EnemyHuman1::attack()
+{
+	glm::vec2 attackPositionVec = getMiddlePosition() + getCurrentDirection() * 50.f;
+	SDL_Rect attackPosition;
+	getRigidBody().getVelocity().x = 0;
+	getRigidBody().getVelocity().y = 0;
+	attackPosition.x = attackPositionVec.x - 30;
+	attackPosition.y = attackPositionVec.y - 30;
+	attackPosition.w = 60;
+	attackPosition.h = 60;
+	getParent()->addChildDuringUpdating(new AttackBox(attackPosition, { 0,0 }, 0, GameObjectType::ENEMY_ATTACK, 50, getCurrentDirection().x < 0 ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE));
+	SoundManager::Instance().playSound("attack");
 }

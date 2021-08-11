@@ -4,6 +4,7 @@
 #include <map>
 #include <vector>
 
+
 #include "DisplayObject.h"
 #include "TreeNode.h"
 #include "TreeNodeType.h"
@@ -44,6 +45,7 @@ private:
 
 	std::vector<TreeNode*> m_treeNodeList;
 	std::map<std::string, DisplayObject*> m_targets;
+	TreeNode* m_pPrevNode;
 
 };
 #endif // __DECISION_TREE__

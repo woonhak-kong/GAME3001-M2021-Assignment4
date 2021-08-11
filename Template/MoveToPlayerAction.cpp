@@ -18,7 +18,7 @@ void MoveToPlayerAction::Action()
 		int newPatrolGoal;
 		auto target = static_cast<Character*>(m_pCharacter->getParent()->getPlayer());
 		auto middleTarget = target->getMiddlePosition();
-		m_pCharacter->calculateF({middleTarget.y / Config::TILE_SIZE, middleTarget.x / Config::TILE_SIZE});
+		m_pCharacter->calculateF({(middleTarget.y +target->getRealCollisionRect().h )/ Config::TILE_SIZE, middleTarget.x / Config::TILE_SIZE});
 		m_pCharacter->findAStarPath();
 		m_isActionDone = false;
 	}
