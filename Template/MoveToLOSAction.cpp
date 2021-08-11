@@ -25,7 +25,6 @@ MoveToLOSAction::MoveToLOSAction(Character* character) :
 
 
 	m_curPatrolGoalIDX = 0;
-	m_isActionDone = true;
 	m_preShortestIDX = 99;
 }
 

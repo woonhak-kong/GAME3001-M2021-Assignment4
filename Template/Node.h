@@ -26,7 +26,6 @@ public:
 	void setParrentTile(Node* parrent);
 	void setStatus(NodeStatus status);
 
-	std::map<NeighbourDirection, Node*>& getNeighbourMap();
 	Node* getParrentTile();
 	NodeStatus getStatus() const;
 
@@ -45,7 +44,6 @@ public:
 	Label m_label;
 	NodeStatus m_status;
 	Node* m_parrentTile;
-	std::map<NeighbourDirection, Node*> m_neighbourMap;
 };
 
 

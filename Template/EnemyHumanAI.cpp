@@ -6,6 +6,7 @@
 #include "CollisionManager.h"
 #include "LOSCondition.h"
 #include "MoveToLOSAction.h"
+#include "MoveToPlayerAction.h"
 #include "PatrolAction.h"
 #include "RadiusCondition.h"
 #include "Scene.h"
@@ -30,7 +31,7 @@ EnemyHumanAI::EnemyHumanAI(Character* character) :
 	m_decisionTree->AddNode(m_LOSNode, m_CloseCombatNode, TreeNodeType::RIGHT_TREE_NODE);
 	m_decisionTree->getTreeNodeList().push_back(m_CloseCombatNode);
 
-	TreeNode* patrolNode = m_decisionTree->AddNode(m_RadiusNode, new MoveToLOSAction(character), TreeNodeType::LEFT_TREE_NODE);
+	TreeNode* patrolNode = m_decisionTree->AddNode(m_RadiusNode, new MoveToPlayerAction(character), TreeNodeType::LEFT_TREE_NODE);
 	m_decisionTree->getTreeNodeList().push_back(patrolNode);
 
 

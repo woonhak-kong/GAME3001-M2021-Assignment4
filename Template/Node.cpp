@@ -54,11 +54,6 @@ void Node::setStatus(NodeStatus status)
 	m_status = status;
 }
 
-std::map<NeighbourDirection, Node*>& Node::getNeighbourMap()
-{
-	return m_neighbourMap;
-}
-
 Node* Node::getParrentTile()
 {
 	return m_parrentTile;

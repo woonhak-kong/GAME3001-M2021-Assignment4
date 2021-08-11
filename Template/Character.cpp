@@ -27,7 +27,8 @@ Character::Character(const LoaderParams& loader) :
 	m_hitMotionNum(0),
 	m_alpha(255),
 	m_isDetectionRadius(false),
-	m_found(false)
+	m_found(false),
+	m_tileList(Config::mapHeight / Config::TILE_SIZE, std::vector<Node>(Config::mapWidth / Config::TILE_SIZE))
 {
 	getRigidBody().setMass(5);
 	getRigidBody().getVelocity() = glm::vec2(0.0f, 0.0f);
@@ -308,8 +309,20 @@ glm::vec2 Character::getMiddlePosition()
 void Character::calculateF(glm::vec2 goal)
 {
 	int g, h, f;
-	m_tileList.clear();
-	m_tileList = getParent()->getNodeList();
+	//m_tileList.clear();
+	//m_tileList = getParent()->getNodeList();
+	//std::copy(getParent()->getNodeList().begin(),getParent()->getNodeList().end(), std::back_inserter(m_tileList));
+
+	//reset
+	for (int row = 0; row < m_tileList.size(); row++)
+	{
+		for (int col = 0; col < m_tileList[0].size(); col++)
+		{
+			m_tileList[row][col].setStatus(NodeStatus::UNVISITED);
+			m_tileList[row][col].m_parrentTile = nullptr;
+		}
+	}
+
 	m_tileList[goal.x][goal.y].setStatus(NodeStatus::GOAL);
 	for (int row = 0; row < m_tileList.size(); row++)
 	{
@@ -317,8 +330,8 @@ void Character::calculateF(glm::vec2 goal)
 		{
 			g = abs(this->getGridPosition().x * 10 - m_tileList[row][col].m_row * 10) + abs(this->getGridPosition().y * 10 - m_tileList[row][col].m_col * 10);
 			h = abs(goal.x * 10 - m_tileList[row][col].m_row * 10) + abs(goal.y * 10 - m_tileList[row][col].m_col * 10);
-			m_tileList[row][col].m_g = g;
-			m_tileList[row][col].m_h = h;
+			//m_tileList[row][col].m_g = g;
+			//m_tileList[row][col].m_h = h;
 			m_tileList[row][col].m_f = g + h;
 			//std::cout << g << ", ";
 			//m_tileList[row][col].m_label.setText(std::to_string(m_tileList[row][col].m_f), {255,255,0,255});
@@ -449,11 +462,11 @@ void Character::findAStarPath()
 
 		}
 		//m_player->setShortestTile(m_shortestTileList);
-		for (auto tile : m_shortestTileList)
-		{
-			//std::cout << "(" << tile->m_row << ", " << tile->m_col << ")" << std::endl;
-			tile->m_label.setText("**", { 0,255,0,255 });
-		}
+		//for (auto tile : m_shortestTileList)
+		//{
+		//	//std::cout << "(" << tile->m_row << ", " << tile->m_col << ")" << std::endl;
+		//	tile->m_label.setText("**", { 0,255,0,255 });
+		//}
 		//std::cout << std::endl;
 	}
 }

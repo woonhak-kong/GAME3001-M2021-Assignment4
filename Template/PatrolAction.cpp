@@ -21,7 +21,6 @@ PatrolAction::PatrolAction(Character* character) :
 	m_patrolPlaces.push_back({ 33,6 });
 
 	m_curPatrolGoalIDX = 0;
-	m_isActionDone = true;
 }
 
 PatrolAction::~PatrolAction()
