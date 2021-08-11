@@ -10,7 +10,6 @@ public:
 	void Action() override;
 
 	std::vector<glm::vec2> m_patrolPlaces;
-	bool m_isActionDone;
 	int m_curPatrolGoalIDX;
 };
 

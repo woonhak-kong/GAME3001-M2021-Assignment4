@@ -186,6 +186,7 @@ xcopy "$(ProjectDir)assets" "$(TargetDir)assets" /s /h /e /d /y /i</Command>
     <ClInclude Include="LOSCondition.h" />
     <ClInclude Include="LowHealthCondition.h" />
     <ClInclude Include="MoveToLOSAction.h" />
+    <ClInclude Include="MoveToPlayerAction.h" />
     <ClInclude Include="Node.h" />
     <ClInclude Include="NodeStatus.h" />
     <ClInclude Include="PatrolAction.h" />
@@ -285,6 +286,7 @@ xcopy "$(ProjectDir)assets" "$(TargetDir)assets" /s /h /e /d /y /i</Command>
     <ClCompile Include="LowHealthCondition.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MoveToLOSAction.cpp" />
+    <ClCompile Include="MoveToPlayerAction.cpp" />
     <ClCompile Include="Napkin.cpp" />
     <ClCompile Include="Node.cpp" />
     <ClCompile Include="ObjectLayer.cpp" />

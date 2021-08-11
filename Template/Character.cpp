@@ -451,10 +451,10 @@ void Character::findAStarPath()
 		//m_player->setShortestTile(m_shortestTileList);
 		for (auto tile : m_shortestTileList)
 		{
-			std::cout << "(" << tile->m_row << ", " << tile->m_col << ")" << std::endl;
+			//std::cout << "(" << tile->m_row << ", " << tile->m_col << ")" << std::endl;
 			tile->m_label.setText("**", { 0,255,0,255 });
 		}
-		std::cout << std::endl;
+		//std::cout << std::endl;
 	}
 }
 

@@ -307,6 +307,9 @@
     <ClInclude Include="MoveToLOSAction.h">
       <Filter>AI\Decision\Actions</Filter>
     </ClInclude>
+    <ClInclude Include="MoveToPlayerAction.h">
+      <Filter>AI\Decision\Actions</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameObject.cpp">
@@ -493,6 +496,9 @@
       <Filter>AI\Decision\Actions</Filter>
     </ClCompile>
     <ClCompile Include="MoveToLOSAction.cpp">
+      <Filter>AI\Decision\Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="MoveToPlayerAction.cpp">
       <Filter>AI\Decision\Actions</Filter>
     </ClCompile>
   </ItemGroup>
