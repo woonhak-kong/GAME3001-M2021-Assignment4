@@ -14,6 +14,7 @@ public:
 	int m_preShortestIDX;
 
 	float m_waitingTime;
+	bool m_isGiveBirth;
 };
 
 #endif // __ACTION_NODE__

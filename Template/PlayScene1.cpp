@@ -47,6 +47,7 @@ void PlayScene1::draw()
 void PlayScene1::update()
 {
 	Scene::updateDisplayList();
+	int numOfEnemies = 0;
 	//m_testPlayer->update();
 	if (m_score != nullptr)
 	{
@@ -58,6 +59,10 @@ void PlayScene1::update()
 	for (auto iterA = displayList.begin(); iterA != displayList.end();)
 	{
 		DisplayObject* objA = *iterA;
+		if(objA->getType() == GameObjectType::ENEMY)
+		{
+			numOfEnemies++;
+		}
 		iterA++;
 		for (auto iterB = iterA; iterB != displayList.end(); iterB++)
 		{
@@ -78,15 +83,14 @@ void PlayScene1::update()
 	}
 	if(dynamic_cast<Player*>(getPlayer())->getGameOver())
 	{
-		std::cout << " aaa" << std::endl;
+		//std::cout << " aaa" << std::endl;
 		Game::Instance().changeSceneState(SceneState::END_SCENE);
 	}
 
-	if(ScoreManager::getScore() > 20)
+	if(ScoreManager::getScore() > 200 || numOfEnemies == 0)
 	{
 		Game::Instance().changeSceneState(SceneState::CLEAR_SCENE);
 	}
-
 }
 
 void PlayScene1::clean()

@@ -56,6 +56,19 @@ Player::Player(const LoaderParams& loader) :
 	TextureManager::Instance().setAnimation(animationName, animation);
 	animation.frames.clear();
 
+	animation.name = "dead";
+	for (int i = 0; i < 4; ++i)
+	{
+		frame.name = "idle";
+		frame.x = size.x * i;
+		frame.y = 0;
+		frame.w = size.x;
+		frame.h = size.y;
+		animation.frames.push_back(frame);
+	}
+	TextureManager::Instance().setAnimation(animationName, animation);
+	animation.frames.clear();
+
 	setAnimation(TextureManager::Instance().getAnimation("player"));
 
 	m_pWeapon = new Weapon(WeaponType::WAND1);
@@ -134,12 +147,14 @@ void Player::draw()
 				}, 3);
 			break;
 		case CharacterState::DEAD:
-			TextureManager::Instance().playAnimation(getAnimation("idle"), getTransform().getPosition().x,
+			std::cout << "dead1" << std::endl;
+			TextureManager::Instance().playAnimation(getAnimation("dead"), getTransform().getPosition().x,
 				getTransform().getPosition().y, getWidth(), getHeight(), 0.5f, 0.0f, getAlpha(), flip, false, [&](CallbackType type) -> void
 				{
 					switch (type)
 					{
 						case CallbackType::ANIMATION_END:
+							std::cout << "dead2" << std::endl;
 							m_gameOver = true;
 							break;
 						default:

@@ -52,6 +52,7 @@ void Scene::removeChild(DisplayObject* child)
 {
 	child->clean();
 	delete child;
+	//child = nullptr;
 	m_displayList.erase(std::remove(m_displayList.begin(), m_displayList.end(), child), m_displayList.end());
 }
 

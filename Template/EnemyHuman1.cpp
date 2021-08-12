@@ -58,6 +58,19 @@ EnemyHuman1::EnemyHuman1(const LoaderParams& loader) :
 	TextureManager::Instance().setAnimation(animationName, animation);
 	animation.frames.clear();
 
+	animation.name = "zombie_dead";
+	for (int i = 0; i < 4; ++i)
+	{
+		frame.name = "zombie_idle";
+		frame.x = size.x * i;
+		frame.y = 0;
+		frame.w = size.x;
+		frame.h = size.y;
+		animation.frames.push_back(frame);
+	}
+	TextureManager::Instance().setAnimation(animationName, animation);
+	animation.frames.clear();
+
 	setAnimation(TextureManager::Instance().getAnimation("monster1"));
 
 	// todo make it automatic
@@ -108,7 +121,7 @@ void EnemyHuman1::draw()
 		case CharacterState::HIT:
 			break;
 		case CharacterState::DEAD:
-			TextureManager::Instance().playAnimation(getAnimation("zombie_idle"), getTransform().getPosition().x - Camera::Instance().getPosition().x,
+			TextureManager::Instance().playAnimation(getAnimation("zombie_dead"), getTransform().getPosition().x - Camera::Instance().getPosition().x,
 				getTransform().getPosition().y - Camera::Instance().getPosition().y, getWidth(), getHeight(), 0.4f, 0.0f, 255, flip, false, [&](CallbackType type) -> void
 				{
 					switch (type)

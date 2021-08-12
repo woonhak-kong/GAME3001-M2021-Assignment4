@@ -1,11 +1,14 @@
 #include "FleeAction.h"
 
+#include "EnemyHuman1.h"
+#include "EnemyHuman2.h"
 #include "Game.h"
 #include "Scene.h"
 #include "Util.h"
 
 FleeAction::FleeAction(Character* character) :
-	ActionNode(character)
+	ActionNode(character),
+	m_isGiveBirth(false)
 {
 	//m_patrolPlaces.push_back({ 4,4 });
 	m_patrolPlaces.push_back({ 5,30 });
@@ -71,6 +74,27 @@ void FleeAction::Action()
 			{
 				m_isActionDone = true;
 				m_waitingTime = 0;
+				if(!m_isGiveBirth)
+				{
+					glm::vec2 position = m_patrolPlaces[rand() % m_patrolPlaces.size()];
+					if (rand() % 2 == 0)
+					{
+						LoaderParams loader = LoaderParams(position.y * Config::TILE_SIZE, position.x * Config::TILE_SIZE,
+							32, 32, 32, 32, 300, 20, "zombie");
+						EnemyHuman1* enemy = new EnemyHuman1(loader);
+						enemy->setNodeList(m_pCharacter->getParent()->getNodeList());
+						m_pCharacter->getParent()->addChild(enemy, 4);
+					}
+					else
+					{
+						LoaderParams loader = LoaderParams(position.y * Config::TILE_SIZE, position.x * Config::TILE_SIZE,
+							32, 32, 32, 32, 300, 20, "zombie");
+						EnemyHuman2* enemy = new EnemyHuman2(loader);
+						enemy->setNodeList(m_pCharacter->getParent()->getNodeList());
+						m_pCharacter->getParent()->addChild(enemy, 4);
+					}
+					m_isGiveBirth = true;
+				}
 			}
 
 		}
