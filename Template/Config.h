@@ -19,7 +19,7 @@ public:
 	static const int SCORE = 0;
 	static const int LIVES = 5;
 	static const int GRAVITY = 5.0f;
-	inline static bool SHOWING_DEBUG = true;
+	inline static bool SHOWING_DEBUG = false;
 	inline static int TILE_SIZE = 0;
 	inline static int mapWidth = 0;
 	inline static int mapHeight = 0;
