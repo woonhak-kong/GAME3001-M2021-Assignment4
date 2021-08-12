@@ -110,7 +110,11 @@ void RangeAttackBox::update()
 	getTransform().getPosition() = getTransform().getPosition() + getCurrentDirection() * (Game::Instance().getDeltaTime() * 300);
 	if (CollisionManager::checkCollideTile4Missile({ getRealCollisionRect().x,getRealCollisionRect().y, getRealCollisionRect().w, getRealCollisionRect().h }, getParent()->getNodeList()))
 	{
-		getParent()->addChildRemoving(this);
+		if (this->isEnabled())
+		{
+			this->setEnabled(false);
+			getParent()->addChildRemoving(this);
+		}
 	}
 }
 

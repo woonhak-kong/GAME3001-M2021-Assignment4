@@ -191,7 +191,11 @@ void EnemyHuman1::collision(DisplayObject* obj)
 		{
 			takeDamage(dynamic_cast<RangeAttackBox*>(obj)->getPower());
 		}
-		getParent()->addChildRemoving(obj);
+		if (obj->isEnabled())
+		{
+			obj->setEnabled(false);
+			getParent()->addChildRemoving(obj);
+		}
 	}
 }
 
